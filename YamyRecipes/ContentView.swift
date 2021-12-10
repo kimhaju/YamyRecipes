@@ -8,9 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @EnvironmentObject var session: SessionStore
+    
+    func listen(){
+        session.listen()
+    }
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        
+        Group {
+            if(session.session != nil){
+                HomeView(user: self.session.session)
+            } else {
+                SignInView()
+            }
+        }.onAppear(perform: listen)
     }
 }
 

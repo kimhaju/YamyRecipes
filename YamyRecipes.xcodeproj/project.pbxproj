@@ -7,18 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A05A0C2276221B5006C7B99 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A05A0C1276221B5006C7B99 /* UserModel.swift */; };
+		9A05A0C427622285006C7B99 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A05A0C327622285006C7B99 /* Extensions.swift */; };
+		9A05A0C727622934006C7B99 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A05A0C627622934006C7B99 /* AuthViewModel.swift */; };
+		9A05A0C927622C71006C7B99 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A05A0C827622C71006C7B99 /* StorageService.swift */; };
 		9A271C722761815200677292 /* YamyRecipesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A271C712761815200677292 /* YamyRecipesApp.swift */; };
 		9A271C742761815200677292 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A271C732761815200677292 /* ContentView.swift */; };
 		9A271C762761815400677292 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A271C752761815400677292 /* Assets.xcassets */; };
 		9A271C792761815400677292 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A271C782761815400677292 /* Preview Assets.xcassets */; };
+		9A271C81276187B800677292 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A271C80276187B800677292 /* FormField.swift */; };
+		9A271C8427618C0D00677292 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A271C8327618C0D00677292 /* SignInView.swift */; };
+		9A271C8627619DA100677292 /* ButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A271C8527619DA100677292 /* ButtonModifier.swift */; };
+		9A271C882761ABFF00677292 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A271C872761ABFF00677292 /* SignUpView.swift */; };
+		9A271C8B2761EDEF00677292 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A271C8A2761EDEF00677292 /* ImagePicker.swift */; };
+		9A271C8D276212E000677292 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A271C8C276212E000677292 /* GoogleService-Info.plist */; };
+		9A7CDD6527631C9C0074AC38 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7CDD6427631C9C0074AC38 /* SessionStore.swift */; };
+		9A7CDD67276360E70074AC38 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7CDD66276360E60074AC38 /* HomeView.swift */; };
+		B971F800A72B7BD7C0F6EE78 /* Pods_YamyRecipes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57FE9F428EDC3194D6DAD61 /* Pods_YamyRecipes.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F12E0A176405CFD9FC1C07E /* Pods-YamyRecipes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YamyRecipes.debug.xcconfig"; path = "Target Support Files/Pods-YamyRecipes/Pods-YamyRecipes.debug.xcconfig"; sourceTree = "<group>"; };
+		510F98CD2ED6D820A4D200F1 /* Pods-YamyRecipes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YamyRecipes.release.xcconfig"; path = "Target Support Files/Pods-YamyRecipes/Pods-YamyRecipes.release.xcconfig"; sourceTree = "<group>"; };
+		9A05A0C1276221B5006C7B99 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		9A05A0C327622285006C7B99 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9A05A0C627622934006C7B99 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		9A05A0C827622C71006C7B99 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		9A271C6E2761815200677292 /* YamyRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YamyRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A271C712761815200677292 /* YamyRecipesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YamyRecipesApp.swift; sourceTree = "<group>"; };
 		9A271C732761815200677292 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9A271C752761815400677292 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A271C782761815400677292 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9A271C80276187B800677292 /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
+		9A271C8327618C0D00677292 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		9A271C8527619DA100677292 /* ButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifier.swift; sourceTree = "<group>"; };
+		9A271C872761ABFF00677292 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		9A271C8A2761EDEF00677292 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		9A271C8C276212E000677292 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9A7CDD6427631C9C0074AC38 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
+		9A7CDD66276360E60074AC38 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A57FE9F428EDC3194D6DAD61 /* Pods_YamyRecipes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YamyRecipes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,17 +54,46 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B971F800A72B7BD7C0F6EE78 /* Pods_YamyRecipes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E7AD4BD32070CD722E88704 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A57FE9F428EDC3194D6DAD61 /* Pods_YamyRecipes.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A05A0C027622197006C7B99 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9A05A0C1276221B5006C7B99 /* UserModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9A05A0C527622917006C7B99 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				9A05A0C627622934006C7B99 /* AuthViewModel.swift */,
+				9A05A0C827622C71006C7B99 /* StorageService.swift */,
+				9A7CDD6427631C9C0074AC38 /* SessionStore.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		9A271C652761815200677292 = {
 			isa = PBXGroup;
 			children = (
 				9A271C702761815200677292 /* YamyRecipes */,
 				9A271C6F2761815200677292 /* Products */,
+				E72C360B4B51FA0FD6F1A84F /* Pods */,
+				2E7AD4BD32070CD722E88704 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,9 +108,15 @@
 		9A271C702761815200677292 /* YamyRecipes */ = {
 			isa = PBXGroup;
 			children = (
+				9A05A0C527622917006C7B99 /* ViewModels */,
+				9A05A0C027622197006C7B99 /* Models */,
+				9A271C892761EDD800677292 /* Utils */,
+				9A271C8227618BF000677292 /* Views */,
+				9A271C7F2761873E00677292 /* Component */,
 				9A271C712761815200677292 /* YamyRecipesApp.swift */,
 				9A271C732761815200677292 /* ContentView.swift */,
 				9A271C752761815400677292 /* Assets.xcassets */,
+				9A271C8C276212E000677292 /* GoogleService-Info.plist */,
 				9A271C772761815400677292 /* Preview Content */,
 			);
 			path = YamyRecipes;
@@ -67,6 +130,43 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		9A271C7F2761873E00677292 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				9A271C80276187B800677292 /* FormField.swift */,
+				9A271C8527619DA100677292 /* ButtonModifier.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		9A271C8227618BF000677292 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9A271C8327618C0D00677292 /* SignInView.swift */,
+				9A271C872761ABFF00677292 /* SignUpView.swift */,
+				9A7CDD66276360E60074AC38 /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9A271C892761EDD800677292 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9A271C8A2761EDEF00677292 /* ImagePicker.swift */,
+				9A05A0C327622285006C7B99 /* Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E72C360B4B51FA0FD6F1A84F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F12E0A176405CFD9FC1C07E /* Pods-YamyRecipes.debug.xcconfig */,
+				510F98CD2ED6D820A4D200F1 /* Pods-YamyRecipes.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +174,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9A271C7C2761815400677292 /* Build configuration list for PBXNativeTarget "YamyRecipes" */;
 			buildPhases = (
+				C3AE2C206EED77548535E6EF /* [CP] Check Pods Manifest.lock */,
 				9A271C6A2761815200677292 /* Sources */,
 				9A271C6B2761815200677292 /* Frameworks */,
 				9A271C6C2761815200677292 /* Resources */,
+				1148CE355DC9CBC5EFDCDA4C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,18 +229,72 @@
 			files = (
 				9A271C792761815400677292 /* Preview Assets.xcassets in Resources */,
 				9A271C762761815400677292 /* Assets.xcassets in Resources */,
+				9A271C8D276212E000677292 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1148CE355DC9CBC5EFDCDA4C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YamyRecipes/Pods-YamyRecipes-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YamyRecipes/Pods-YamyRecipes-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YamyRecipes/Pods-YamyRecipes-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3AE2C206EED77548535E6EF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YamyRecipes-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9A271C6A2761815200677292 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A05A0C727622934006C7B99 /* AuthViewModel.swift in Sources */,
+				9A271C81276187B800677292 /* FormField.swift in Sources */,
+				9A7CDD67276360E70074AC38 /* HomeView.swift in Sources */,
+				9A7CDD6527631C9C0074AC38 /* SessionStore.swift in Sources */,
+				9A05A0C427622285006C7B99 /* Extensions.swift in Sources */,
 				9A271C742761815200677292 /* ContentView.swift in Sources */,
+				9A05A0C2276221B5006C7B99 /* UserModel.swift in Sources */,
+				9A271C8427618C0D00677292 /* SignInView.swift in Sources */,
+				9A271C8B2761EDEF00677292 /* ImagePicker.swift in Sources */,
 				9A271C722761815200677292 /* YamyRecipesApp.swift in Sources */,
+				9A271C882761ABFF00677292 /* SignUpView.swift in Sources */,
+				9A05A0C927622C71006C7B99 /* StorageService.swift in Sources */,
+				9A271C8627619DA100677292 /* ButtonModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +419,7 @@
 		};
 		9A271C7D2761815400677292 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F12E0A176405CFD9FC1C07E /* Pods-YamyRecipes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -271,6 +428,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"YamyRecipes/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -292,6 +450,7 @@
 		};
 		9A271C7E2761815400677292 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 510F98CD2ED6D820A4D200F1 /* Pods-YamyRecipes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -300,6 +459,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"YamyRecipes/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
