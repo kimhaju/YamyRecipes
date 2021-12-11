@@ -11,6 +11,16 @@
 		9A05A0C427622285006C7B99 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A05A0C327622285006C7B99 /* Extensions.swift */; };
 		9A05A0C727622934006C7B99 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A05A0C627622934006C7B99 /* AuthViewModel.swift */; };
 		9A05A0C927622C71006C7B99 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A05A0C827622C71006C7B99 /* StorageService.swift */; };
+		9A0C35AF276477DE00A8364C /* RecipesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C35AE276477DE00A8364C /* RecipesModel.swift */; };
+		9A0C35B127647EE100A8364C /* RecipesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C35B027647EE100A8364C /* RecipesViewModel.swift */; };
+		9A0C35B427648ACC00A8364C /* RecipesUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C35B327648ACC00A8364C /* RecipesUploadView.swift */; };
+		9A0C35B6276493C500A8364C /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C35B5276493C500A8364C /* CustomPicker.swift */; };
+		9A0C35B82764970700A8364C /* DynamicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C35B72764970700A8364C /* DynamicTextField.swift */; };
+		9A0C35BA2764E51100A8364C /* RecipeSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C35B92764E51100A8364C /* RecipeSearchView.swift */; };
+		9A0C35BC2764E53500A8364C /* HeartRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C35BB2764E53500A8364C /* HeartRecipesView.swift */; };
+		9A0C35BE2764E55D00A8364C /* MyRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C35BD2764E55D00A8364C /* MyRecipesView.swift */; };
+		9A0C35C02764E59400A8364C /* CoreIndicatorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C35BF2764E59400A8364C /* CoreIndicatorsView.swift */; };
+		9A0C35C22764E5B300A8364C /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C35C12764E5B300A8364C /* QuestionView.swift */; };
 		9A271C722761815200677292 /* YamyRecipesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A271C712761815200677292 /* YamyRecipesApp.swift */; };
 		9A271C742761815200677292 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A271C732761815200677292 /* ContentView.swift */; };
 		9A271C762761815400677292 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A271C752761815400677292 /* Assets.xcassets */; };
@@ -34,6 +44,16 @@
 		9A05A0C327622285006C7B99 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9A05A0C627622934006C7B99 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		9A05A0C827622C71006C7B99 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		9A0C35AE276477DE00A8364C /* RecipesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesModel.swift; sourceTree = "<group>"; };
+		9A0C35B027647EE100A8364C /* RecipesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewModel.swift; sourceTree = "<group>"; };
+		9A0C35B327648ACC00A8364C /* RecipesUploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesUploadView.swift; sourceTree = "<group>"; };
+		9A0C35B5276493C500A8364C /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
+		9A0C35B72764970700A8364C /* DynamicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTextField.swift; sourceTree = "<group>"; };
+		9A0C35B92764E51100A8364C /* RecipeSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchView.swift; sourceTree = "<group>"; };
+		9A0C35BB2764E53500A8364C /* HeartRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRecipesView.swift; sourceTree = "<group>"; };
+		9A0C35BD2764E55D00A8364C /* MyRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecipesView.swift; sourceTree = "<group>"; };
+		9A0C35BF2764E59400A8364C /* CoreIndicatorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreIndicatorsView.swift; sourceTree = "<group>"; };
+		9A0C35C12764E5B300A8364C /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		9A271C6E2761815200677292 /* YamyRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YamyRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A271C712761815200677292 /* YamyRecipesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YamyRecipesApp.swift; sourceTree = "<group>"; };
 		9A271C732761815200677292 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				9A05A0C1276221B5006C7B99 /* UserModel.swift */,
+				9A0C35AE276477DE00A8364C /* RecipesModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -85,8 +106,22 @@
 				9A05A0C627622934006C7B99 /* AuthViewModel.swift */,
 				9A05A0C827622C71006C7B99 /* StorageService.swift */,
 				9A7CDD6427631C9C0074AC38 /* SessionStore.swift */,
+				9A0C35B027647EE100A8364C /* RecipesViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		9A0C35B227648AA500A8364C /* ImageSelectView */ = {
+			isa = PBXGroup;
+			children = (
+				9A0C35B327648ACC00A8364C /* RecipesUploadView.swift */,
+				9A0C35B92764E51100A8364C /* RecipeSearchView.swift */,
+				9A0C35BB2764E53500A8364C /* HeartRecipesView.swift */,
+				9A0C35BD2764E55D00A8364C /* MyRecipesView.swift */,
+				9A0C35BF2764E59400A8364C /* CoreIndicatorsView.swift */,
+				9A0C35C12764E5B300A8364C /* QuestionView.swift */,
+			);
+			path = ImageSelectView;
 			sourceTree = "<group>";
 		};
 		9A271C652761815200677292 = {
@@ -137,6 +172,8 @@
 			children = (
 				9A271C80276187B800677292 /* FormField.swift */,
 				9A271C8527619DA100677292 /* ButtonModifier.swift */,
+				9A0C35B5276493C500A8364C /* CustomPicker.swift */,
+				9A0C35B72764970700A8364C /* DynamicTextField.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -144,6 +181,7 @@
 		9A271C8227618BF000677292 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9A0C35B227648AA500A8364C /* ImageSelectView */,
 				9A271C8327618C0D00677292 /* SignInView.swift */,
 				9A271C872761ABFF00677292 /* SignUpView.swift */,
 				9A7CDD66276360E60074AC38 /* HomeView.swift */,
@@ -287,14 +325,24 @@
 			files = (
 				9A05A0C727622934006C7B99 /* AuthViewModel.swift in Sources */,
 				9A271C81276187B800677292 /* FormField.swift in Sources */,
+				9A0C35BC2764E53500A8364C /* HeartRecipesView.swift in Sources */,
+				9A0C35B427648ACC00A8364C /* RecipesUploadView.swift in Sources */,
 				9A7CDD67276360E70074AC38 /* HomeView.swift in Sources */,
 				9A7CDD6527631C9C0074AC38 /* SessionStore.swift in Sources */,
+				9A0C35B82764970700A8364C /* DynamicTextField.swift in Sources */,
 				9A05A0C427622285006C7B99 /* Extensions.swift in Sources */,
 				9A271C742761815200677292 /* ContentView.swift in Sources */,
 				9AED62E3276466B800A5DEC1 /* ExtensionsView.swift in Sources */,
+				9A0C35B6276493C500A8364C /* CustomPicker.swift in Sources */,
+				9A0C35AF276477DE00A8364C /* RecipesModel.swift in Sources */,
+				9A0C35B127647EE100A8364C /* RecipesViewModel.swift in Sources */,
 				9A05A0C2276221B5006C7B99 /* UserModel.swift in Sources */,
 				9A271C8427618C0D00677292 /* SignInView.swift in Sources */,
+				9A0C35BA2764E51100A8364C /* RecipeSearchView.swift in Sources */,
+				9A0C35C22764E5B300A8364C /* QuestionView.swift in Sources */,
 				9A271C8B2761EDEF00677292 /* ImagePicker.swift in Sources */,
+				9A0C35C02764E59400A8364C /* CoreIndicatorsView.swift in Sources */,
+				9A0C35BE2764E55D00A8364C /* MyRecipesView.swift in Sources */,
 				9A271C722761815200677292 /* YamyRecipesApp.swift in Sources */,
 				9A271C882761ABFF00677292 /* SignUpView.swift in Sources */,
 				9A05A0C927622C71006C7B99 /* StorageService.swift in Sources */,
