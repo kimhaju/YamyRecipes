@@ -23,6 +23,7 @@
 		9A271C8D276212E000677292 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A271C8C276212E000677292 /* GoogleService-Info.plist */; };
 		9A7CDD6527631C9C0074AC38 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7CDD6427631C9C0074AC38 /* SessionStore.swift */; };
 		9A7CDD67276360E70074AC38 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7CDD66276360E60074AC38 /* HomeView.swift */; };
+		9AED62E3276466B800A5DEC1 /* ExtensionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AED62E2276466B700A5DEC1 /* ExtensionsView.swift */; };
 		B971F800A72B7BD7C0F6EE78 /* Pods_YamyRecipes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57FE9F428EDC3194D6DAD61 /* Pods_YamyRecipes.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		9A271C8C276212E000677292 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9A7CDD6427631C9C0074AC38 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		9A7CDD66276360E60074AC38 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9AED62E2276466B700A5DEC1 /* ExtensionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsView.swift; sourceTree = "<group>"; };
 		A57FE9F428EDC3194D6DAD61 /* Pods_YamyRecipes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YamyRecipes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -154,6 +156,7 @@
 			children = (
 				9A271C8A2761EDEF00677292 /* ImagePicker.swift */,
 				9A05A0C327622285006C7B99 /* Extensions.swift */,
+				9AED62E2276466B700A5DEC1 /* ExtensionsView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				9A7CDD6527631C9C0074AC38 /* SessionStore.swift in Sources */,
 				9A05A0C427622285006C7B99 /* Extensions.swift in Sources */,
 				9A271C742761815200677292 /* ContentView.swift in Sources */,
+				9AED62E3276466B800A5DEC1 /* ExtensionsView.swift in Sources */,
 				9A05A0C2276221B5006C7B99 /* UserModel.swift in Sources */,
 				9A271C8427618C0D00677292 /* SignInView.swift in Sources */,
 				9A271C8B2761EDEF00677292 /* ImagePicker.swift in Sources */,
