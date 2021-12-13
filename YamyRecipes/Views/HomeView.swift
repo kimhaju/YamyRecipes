@@ -74,7 +74,7 @@ struct HomeView: View {
                                     
                                     VStack{
                                         Button(action: {}, label: {
-                                            NavigationLink(destination: RecipesUploadView()){
+                                            NavigationLink(destination: RecipesUploadView().environmentObject(RecipesViewModel())){
                                         Image("recipesUpload").resizable().frame(width: geometry.size.width / 2.2, height: 150).background(Color("rightYellow")).cornerRadius(10, corners: [.topLeft, .topRight]).border(width: 1, edges: [.bottom], color: .black)
                                             }
                                         })
