@@ -40,7 +40,7 @@ struct HomeView: View {
                                 HStack(spacing: 10){
                                         VStack {
                                             Button(action: {}, label: {
-                                                NavigationLink(destination: RecipeSearchView()){
+                                                NavigationLink(destination: RecipeSearchView().environmentObject(RecipesViewModel())){
                                                     Image("recipeSearch").resizable().frame(width: geometry.size.width / 2.2, height: 150).background(Color("rightBlue")).cornerRadius(10, corners: [.topLeft, .topRight]).border(width: 1, edges: [.bottom], color: .black)
                                                 }
                                             })
@@ -74,7 +74,7 @@ struct HomeView: View {
                                     
                                     VStack{
                                         Button(action: {}, label: {
-                                            NavigationLink(destination: RecipesUploadView().environmentObject(RecipesViewModel())){
+                                            NavigationLink(destination: RecipesUploadView(user: self.userSession.session).environmentObject(RecipesViewModel())){
                                         Image("recipesUpload").resizable().frame(width: geometry.size.width / 2.2, height: 150).background(Color("rightYellow")).cornerRadius(10, corners: [.topLeft, .topRight]).border(width: 1, edges: [.bottom], color: .black)
                                             }
                                         })

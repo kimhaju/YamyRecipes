@@ -17,7 +17,7 @@ struct RecipesModel: Identifiable {
     var ratings: String
     var cook_level: String
     var cook_details: String
-    var cook_images = Array(repeating: Data(count: 0), count: 4)
+    var cook_images : [String]
     var writer: String
 }
 

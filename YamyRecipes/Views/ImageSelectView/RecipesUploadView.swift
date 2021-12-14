@@ -6,26 +6,14 @@
 //
 
 import SwiftUI
-
-//struct RecipesModel: Identifiable {
-//    var id : String
-//    //->음식 이름,요리 분류(국물, 양식, 한식, 베이커리 등등),조리시간,재료, 평가, 조리법, 이미지들
-//    var cook_name: String
-//    var cook_tag: String
-//    var cook_times: String
-//    var cook_indigators: String
-//    var ratings: String
-//    var cook_level: String
-//    var cook_details: String
-//    var cook_images = Array(repeating: Data(count: 0), count: 6)
-//    var writer: String
-//}
-
+import Firebase
 
 struct RecipesUploadView: View {
     
     // MARK: - 필드 값
     @EnvironmentObject var recipesViewModel: RecipesViewModel
+    
+    var user : UserModel?
     
     @State private var cookName : String = ""
     @State private var cookIndigators: String = ""
@@ -38,7 +26,7 @@ struct RecipesUploadView: View {
     @State private var cookLevel : String = "쉬움"
     @State var textHeight: CGFloat = 0
     @State var currentImage = 0
-    @State var cookImages : [Data] = []
+    @State private var cookImages : [Data] = []
     
     //->업로드 체크
     
@@ -216,7 +204,10 @@ struct RecipesUploadView: View {
                     Spacer()
                     
                     VStack{
-                            Button(action: {}){
+                            Button(action: {
+                                
+                                
+                            }){
                                 Text("레시피 업로드").font(.title).modifier(ButtonModifier())
                             }
                         

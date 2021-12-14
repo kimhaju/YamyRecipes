@@ -25,8 +25,10 @@ class RecipesViewModel: NSObject, ObservableObject {
     //->이미지 피커 
     @Published var picker = false
     
-    func uploadingPosting(urls : [String]){
+    private var db = Firestore.firestore()
+    @Published var wishItems = [RecipesModel]()
+   
+    func getRecipes() {
         
     }
-    
 }
