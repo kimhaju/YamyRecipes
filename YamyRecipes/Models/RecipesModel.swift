@@ -13,7 +13,7 @@ struct RecipesModel: Identifiable {
     var cook_name: String
     var cook_tag: String
     var cook_times: String
-    var cook_indigators: String
+    var cook_indigator: String
     var ratings: String
     var cook_level: String
     var cook_details: String
