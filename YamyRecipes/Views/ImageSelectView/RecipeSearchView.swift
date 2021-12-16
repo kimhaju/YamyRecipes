@@ -100,6 +100,13 @@ struct RecipesDetailView : View{
                         .padding(.top,UIApplication.shared.windows.first?.safeAreaInsets.top)
                     }
                     
+                    HStack(spacing: 5){
+                        WebImage(url: URL(string: recipes?.cook_images[0] ?? "")).resizable().frame(width: 60, height: 60).cornerRadius(10)
+                        WebImage(url: URL(string: recipes?.cook_images[1] ?? "")).resizable().frame(width: 60, height: 60).cornerRadius(10)
+                        WebImage(url: URL(string: recipes?.cook_images[2] ?? "")).resizable().frame(width: 60, height: 60).cornerRadius(10)
+                        WebImage(url: URL(string: recipes?.cook_images[3] ?? "")).resizable().frame(width: 60, height: 60).cornerRadius(10)
+                    }
+                    
                     HStack(alignment: .top){
                         
                         VStack(alignment: .leading, spacing: 12){
@@ -165,20 +172,3 @@ struct RecipesDetailView : View{
     }
 }
 
-
-
-//struct RecipeSearchView_Previews: PreviewProvider {
-//
-//    static var previews: some View {
-//        RecipeSearchView(recipesModel: RecipesModel)
-//    }
-//}
-
-//NavigationLink(destination: RecipesDetailView(recipes: recipes, show: $show, animation: animation)){
-//
-//    WebImage(url: URL(string: recipes.cook_images[0])).resizable().frame(width: 100, height: 100)
-//    Text(recipes.cook_name).font(.title2).fontWeight(.bold)
-//    Text(recipes.cook_level).font(.title3)
-//    Text(recipes.cook_times).font(.footnote)
-//
-//}

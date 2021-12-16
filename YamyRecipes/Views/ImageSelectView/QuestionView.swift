@@ -8,13 +8,43 @@
 import SwiftUI
 
 struct QuestionView: View {
+    @StateObject var question = QuestionModel()
+//    @AppStorage("current_user") var user = ""
+    var user: UserModel?
+    
     var body: some View {
-        Text("관리자에게 문의 무늬는 포도가 먹고시픈뎅")
+        
+        VStack{
+            ScrollView {
+                ForEach(question.msgs){ msg in
+                    Text(msg.msg ?? "현재 메세지가 존재하지 않습니다!")
+                }
+            }
+        }
     }
 }
 
-struct QuestionView_Previews: PreviewProvider {
-    static var previews: some View {
-        QuestionView()
+struct ChatRow: View {
+    var charData: MsgModel
+    var user: UserModel?
+    
+    var body: some View {
+        HStack(spacing: 15){
+            Text(user?.username ?? "").fontWeight(.heavy)
+                .foregroundColor(.white)
+                .frame(width: 50, height: 50)
+                .background(Color("butterfly"))
+                .clipShape(Circle())
+        }
     }
 }
+
+//        .onAppear(perform: {
+//            question.onAppear()
+//        })
+
+//struct QuestionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        QuestionView()
+//    }
+//}
