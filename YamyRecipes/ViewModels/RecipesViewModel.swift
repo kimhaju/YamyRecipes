@@ -14,12 +14,16 @@ class RecipesViewModel: ObservableObject {
     @Published var cook_name = ""
     @Published var cook_tag = ""
     @Published var cook_times = ""
-    @Published var cook_indigators = ""
+    @Published var cook_indigator = ""
     
     @Published var cook_level = ""
     @Published var cook_details = ""
     @Published var cook_images = Array(repeating: Data(count: 0), count: 4)
     @Published var writer = ""
+    
+    @Published var isLoading = false
+    @Published var alert = false
+    @Published var alertMsg = ""
     
     //->이미지 피커 
     @Published var picker = false
@@ -51,6 +55,64 @@ class RecipesViewModel: ObservableObject {
                 return RecipesModel(id: id, cook_name: cookName, cook_tag: cookTag, cook_times: cookTime, cook_indigator: cookIndigator, ratings: ratings, cook_level: cookLevel, cook_details: cookDetail, cook_images: cookImages, writer: writer)
                  
             }
+        }
+    }
+    
+    func uploadPosting(userId: String, cookTag: String, cookTimes: String, cookLevel: String){
+        
+        let storage = Storage.storage().reference()
+        let ref = storage.child("cookImage")
+        
+        var urls : [String] = []
+        
+        isLoading.toggle()
+        
+        for index in cook_images.indices {
+            
+            ref.child("img\(index)").putData(cook_images[index], metadata: nil){ _, err in
+                
+                if err != nil {
+                    self.alertMsg = err!.localizedDescription
+                    self.alert.toggle()
+                    self.isLoading.toggle()
+                    return
+                }
+                
+                ref.child("img\(index)").downloadURL { url, _ in
+                    guard let imageUrl = url else { return }
+                    
+                    urls.append("\(imageUrl)")
+                    
+                    if urls.count == self.cook_images.count {
+                        self.uploadImagePosting(urls: urls, userId: userId, cookTag: cookTag, cookTimes: cookTimes, cookLevel: cookLevel)
+                    }
+                }
+            }
+        }
+    }
+    
+    func uploadImagePosting(urls: [String], userId: String, cookTag: String, cookTimes: String, cookLevel: String){
+        
+        db.collection("recipes").document().setData([
+            "cook_details" : self.cook_details,
+            "cook_images" : urls,
+            "cook_indigator" : self.cook_indigator,
+            "cook_level" : cookLevel,
+            "cook_tag": cookTag,
+            "cook_times": cookTimes,
+            "cook_writer": userId,
+            "cook_name": self.cook_name,
+            "cook_ratings": "5"
+        ]){ err in
+            
+            if err != nil {
+                self.alertMsg = err!.localizedDescription
+                self.alert.toggle()
+                return
+            }
+            
+            print("글쓰는데 성공!")
+            
         }
     }
 }

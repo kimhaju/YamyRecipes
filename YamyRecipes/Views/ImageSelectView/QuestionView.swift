@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct QuestionView: View {
+    
     @StateObject var question = QuestionModel()
-//    @AppStorage("current_user") var user = ""
+
     var user: UserModel?
     
     var body: some View {

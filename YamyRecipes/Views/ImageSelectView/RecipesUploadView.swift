@@ -85,9 +85,7 @@ struct RecipesUploadView: View {
             ScrollView{
                 VStack(alignment: .leading ,spacing: 10){
                     Group{
-                       
-                        FormField(value: $cookName, icon: "sparkles", placeholder: "요리 제목").padding()
-                        
+                        FormField(value: $recipesViewModel.cook_name, icon: "sparkles", placeholder: "요리 제목").padding()
                         HStack(spacing: 10){
                             Text("요리 태그: ").font(.footnote).padding(.leading,5)
                             ForEach(cookTags, id: \.self){ item in
@@ -160,9 +158,7 @@ struct RecipesUploadView: View {
                             })
                             .padding(.bottom,10)
                         }.padding()
-                            
 
-                        
                         VStack(alignment: .leading, spacing: 10){
                             HStack{
                                 Text("재료").font(.title3).fontWeight(.bold).padding(.leading,10)
@@ -177,7 +173,7 @@ struct RecipesUploadView: View {
                                     }
                                     Color(UIColor.secondarySystemBackground)
                                     
-                                    DynamicTextField(text: $cookIndigators, height: $textHeight)
+                                    DynamicTextField(text: $recipesViewModel.cook_indigator, height: $textHeight)
                                 }.overlay(RoundedRectangle(cornerRadius: 5).stroke(Color("salmon")))
                                     .frame(width: 330, height: textFieldHeight)
                                 
@@ -193,20 +189,19 @@ struct RecipesUploadView: View {
                                     }
                                     Color(UIColor.secondarySystemBackground)
                                     
-                                    DynamicTextField(text: $cookIndigators, height: $textHeight)
+                                    DynamicTextField(text: $recipesViewModel.cook_details, height: $textHeight)
                                     
                                 }.overlay(RoundedRectangle(cornerRadius: 5).stroke(Color("salmon")))
                                     .frame(width: 330, height: textWriteHeight)
                         }.padding(.leading,20)
                          .padding(.top,200)
-                    
                     }
                     Spacer()
                     
                     VStack{
                             Button(action: {
-                                
-                                
+                           
+                                recipesViewModel.uploadPosting(userId: user?.uid ?? "", cookTag: cookTag, cookTimes: cookTime, cookLevel: cookLevel)
                             }){
                                 Text("레시피 업로드").font(.title).modifier(ButtonModifier())
                             }
