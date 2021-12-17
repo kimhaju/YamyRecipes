@@ -202,8 +202,12 @@ struct RecipesUploadView: View {
                             Button(action: {
                            
                                 recipesViewModel.uploadPosting(userId: user?.uid ?? "", cookTag: cookTag, cookTimes: cookTime, cookLevel: cookLevel)
+                                
+                                self.showingAlert = true
                             }){
                                 Text("레시피 업로드").font(.title).modifier(ButtonModifier())
+                            }.alert(isPresented: $showingAlert){
+                                Alert(title: Text("게시글 업로드"), message: Text("게시글이 업로드 되었습니다 확인해주세요!"), dismissButton: .default(Text("X")))
                             }
                         
                     }.padding(10)

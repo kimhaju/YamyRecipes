@@ -7,16 +7,13 @@
 
 import Foundation
 import Firebase
+import SwiftUI
 
 class RecipesViewModel: ObservableObject {
     
     //->음식 이름,요리 분류(국물, 양식, 한식, 베이커리 등등),조리시간,재료, 평가, 조리법, 이미지들
     @Published var cook_name = ""
-    @Published var cook_tag = ""
-    @Published var cook_times = ""
     @Published var cook_indigator = ""
-    
-    @Published var cook_level = ""
     @Published var cook_details = ""
     @Published var cook_images = Array(repeating: Data(count: 0), count: 4)
     @Published var writer = ""
@@ -25,11 +22,15 @@ class RecipesViewModel: ObservableObject {
     @Published var alert = false
     @Published var alertMsg = ""
     
+    @Published var searchRecipes = ""
+    
+    
     //->이미지 피커 
     @Published var picker = false
     
     private var db = Firestore.firestore()
     @Published var recipes = [RecipesModel]()
+    @Published var filteredRecipes = [RecipesModel]()
    
     func getRecipes() {
         db.collection("recipes").addSnapshotListener { snapshot, error in
@@ -55,13 +56,22 @@ class RecipesViewModel: ObservableObject {
                 return RecipesModel(id: id, cook_name: cookName, cook_tag: cookTag, cook_times: cookTime, cook_indigator: cookIndigator, ratings: ratings, cook_level: cookLevel, cook_details: cookDetail, cook_images: cookImages, writer: writer)
                  
             }
+            self.filteredRecipes = self.recipes
+        }
+    }
+    
+    func filterRecipes() {
+        withAnimation(.linear){
+            self.filteredRecipes = self.recipes.filter{
+                return $0.cook_name.lowercased().contains(self.searchRecipes.lowercased())
+            }
         }
     }
     
     func uploadPosting(userId: String, cookTag: String, cookTimes: String, cookLevel: String){
         
         let storage = Storage.storage().reference()
-        let ref = storage.child("cookImage")
+        let ref = storage.child("cookImage").child(UUID().uuidString)
         
         var urls : [String] = []
         
