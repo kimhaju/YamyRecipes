@@ -10,42 +10,44 @@ import SwiftUI
 struct QuestionView: View {
     
     @StateObject var question = QuestionModel()
+    @AppStorage("current_user") var user = ""
 
-    var user: UserModel?
-    
     var body: some View {
         
         VStack{
-            ScrollView {
+            ScrollView{
                 ForEach(question.msgs){ msg in
-                    Text(msg.msg ?? "현재 메세지가 존재하지 않습니다!")
+                    
                 }
             }
         }
+        .onAppear(perform: {
+            question.onAppear()
+        })
     }
 }
 
 struct ChatRow: View {
-    var charData: MsgModel
-    var user: UserModel?
+    var chatData : MsgModel
+    @AppStorage("current_user") var user = ""
     
     var body: some View {
         HStack(spacing: 15){
-            Text(user?.username ?? "").fontWeight(.heavy)
-                .foregroundColor(.white)
-                .frame(width: 50, height: 50)
-                .background(Color("butterfly"))
-                .clipShape(Circle())
+            
         }
     }
 }
 
-//        .onAppear(perform: {
-//            question.onAppear()
-//        })
+struct NickName: View {
+    var name : String
+    @AppStorage("current_user") var user = ""
+    
+    var body: some View {
+        Text(String(name.first!))
+            .fontWeight(.heavy)
+            .foregroundColor(.white)
+            .frame(width: 50, height: 50)
+            .background(name == user ? Color("rightBlue") : Color("butterfly").opacity(0.5))
+    }
+}
 
-//struct QuestionView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        QuestionView()
-//    }
-//}
