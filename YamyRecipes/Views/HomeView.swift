@@ -91,7 +91,7 @@ struct HomeView: View {
                                     
                                     VStack {
                                         Button(action: {}, label: {
-                                            NavigationLink(destination: CoreIndicatorsView()){
+                                            NavigationLink(destination: CoreIndicatorsView(classifier: ImageClassifier())){
                                         Image("ingredients").resizable().frame(width: geometry.size.width / 2.2, height: 150).background(Color.white)
                                             .cornerRadius(10, corners: [.topLeft, .topRight]).border(width: 1, edges: [.bottom], color: .black)
                                             }
@@ -103,7 +103,7 @@ struct HomeView: View {
                                     
                                     VStack{
                                         Button(action: {}, label: {
-                                            NavigationLink(destination: QuestionView(user: self.userSession.session)){
+                                            NavigationLink(destination: QuestionView()){
                                         Image("question").resizable().frame(width: geometry.size.width / 2.2, height: 150).background(Color("rightBlue")).cornerRadius(10, corners: [.topLeft, .topRight]).border(width: 1, edges: [.bottom], color: .black)
                                             }
                                         })

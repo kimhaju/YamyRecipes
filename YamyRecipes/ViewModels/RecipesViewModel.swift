@@ -31,6 +31,10 @@ class RecipesViewModel: ObservableObject {
     private var db = Firestore.firestore()
     @Published var recipes = [RecipesModel]()
     @Published var filteredRecipes = [RecipesModel]()
+    @Published var selectRecipes = [RecipesModel]()
+    
+    //->마음에 든 레시피 표시
+    @Published var heartRecipes : [HeartRecipes] = []
    
     func getRecipes() {
         db.collection("recipes").addSnapshotListener { snapshot, error in
@@ -64,6 +68,33 @@ class RecipesViewModel: ObservableObject {
         withAnimation(.linear){
             self.filteredRecipes = self.recipes.filter{
                 return $0.cook_name.lowercased().contains(self.searchRecipes.lowercased())
+            }
+        }
+    }
+    //->내일은 태그별로 구현할수 있는거 구현하기 
+    func tagRecipes(tag: String){
+        db.collection("recipes").whereField("cook_tag", isEqualTo: tag).addSnapshotListener { snapshot, error in
+            
+            guard let documents = snapshot?.documents else {
+                print("데이터를 찾을 수 없습니다.")
+                return
+            }
+            
+            self.selectRecipes = documents.map { snap -> RecipesModel in
+                let data = snap.data()
+                
+                let id = snap.documentID
+                let cookName = data["cook_name"] as? String ?? ""
+                let cookTag = data["cook_tag"] as? String ?? ""
+                let cookTime = data["cook_time"] as? String ?? ""
+                let cookIndigator = data["cook_indigator"] as? String ?? ""
+                let ratings = data["ratings"] as? String ?? ""
+                let writer = data["writer"] as? String ?? ""
+                let cookLevel = data["cook_level"] as? String ?? ""
+                let cookDetail = data["cook_details"] as? String ?? ""
+                let cookImages = data["cook_images"] as? Array ?? [""]
+                
+                return RecipesModel(id: id, cook_name: cookName, cook_tag: cookTag, cook_times: cookTime, cook_indigator: cookIndigator, ratings: ratings, cook_level: cookLevel, cook_details: cookDetail, cook_images: cookImages, writer: writer)
             }
         }
     }
@@ -125,4 +156,30 @@ class RecipesViewModel: ObservableObject {
             
         }
     }
+    
+    //->마음에든 레시피 표시
+    
+    func addHeartRecipes(recipes: RecipesModel){
+        
+        if recipes.isAdded {
+            //->리스트 삭제
+            return
+        }
+    }
+    
+    func getIndex(recipes : RecipesModel, isHeartIndex: Bool) -> Int {
+        
+        let index = self.recipes.firstIndex { (item1) -> Bool in
+            
+            return recipes.id == item1.id
+        } ?? 0
+        
+        let heartIndex = self.heartRecipes.firstIndex { (item1) -> Bool in
+            
+            return recipes.id == item1.love_recipes.id
+        } ?? 0
+        
+        return isHeartIndex ? heartIndex : index
+    }
+    
 }

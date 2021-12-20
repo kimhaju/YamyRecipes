@@ -13,8 +13,8 @@ struct RecipeSearchView: View {
     @EnvironmentObject var recipesModel : RecipesViewModel
     @Namespace var animation
     @State var show = false
-    @State private var tag : String = "한식"
-    
+    @State private var tag : String = "전체"
+  
     var body: some View {
         ScrollView{
             VStack{
@@ -30,9 +30,9 @@ struct RecipeSearchView: View {
                     Divider().frame(height: 24)
                 }.foregroundColor(Color.secondary.opacity(0.5)).background(Color.gray.opacity(0.1)).cornerRadius(80).shadow(radius: 1).padding()
                 
-                HStack(spacing: 10){
+                HStack(spacing: 5){
                     Text("태그 선택: ").fontWeight(.bold)
-                    ForEach(cookTags, id: \.self){ selectTag in
+                    ForEach(selectTags, id: \.self){ selectTag in
                         Button(action: {tag = selectTag}){
                             Text("\(selectTag)")
                                 .fontWeight(.bold)
@@ -47,12 +47,12 @@ struct RecipeSearchView: View {
 
             VStack(spacing: 15){
                 ForEach(self.recipesModel.filteredRecipes){ item in
-                   RecipesCellView(recipes: item)
-                }
-            }
-            .navigationBarTitle("레시피 검색하기")
+                    RecipesCellView(recipes: item)
+              }
+          }.navigationBarTitle("레시피 검색하기")
         }.onAppear(){
             self.recipesModel.getRecipes()
+
         }.onChange(of: recipesModel.searchRecipes, perform: { value in
             
             //- 검색결과에 따라 변화하도록 설정
@@ -63,6 +63,7 @@ struct RecipeSearchView: View {
                    recipesModel.filterRecipes()
                 }
             }
+            
             if recipesModel.searchRecipes == ""{
                 //->데이터 결과
                 withAnimation(.linear){
@@ -79,7 +80,7 @@ struct RecipesCellView: View{
     var recipes : RecipesModel?
     @State var show = false
     @Namespace var animation
-
+    
     var body: some View {
         VStack{
             AnimatedImage(url: URL(string: recipes?.cook_images[0] ?? "")).resizable().frame(height: 270)
@@ -112,8 +113,10 @@ struct RecipesCellView: View{
     }
 }
 
+
 // MARK: - 디테일 뷰
 struct RecipesDetailView : View{
+    @StateObject var recipesModel = RecipesViewModel()
     var recipes : RecipesModel?
     @Binding var show : Bool
     var animation : Namespace.ID
@@ -143,7 +146,9 @@ struct RecipesDetailView : View{
                             }
                             Spacer()
                             
-                            Button(action: {}, label: {
+                            Button(action: {
+                                
+                            }, label: {
                                 Image(systemName: "heart")
                                     .foregroundColor(.pink)
                                     .padding()

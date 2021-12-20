@@ -36,6 +36,11 @@
 		9A7B0ABD276B44D30082F0AA /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7B0ABC276B44D30082F0AA /* QuestionModel.swift */; };
 		9A7CDD6527631C9C0074AC38 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7CDD6427631C9C0074AC38 /* SessionStore.swift */; };
 		9A7CDD67276360E70074AC38 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7CDD66276360E60074AC38 /* HomeView.swift */; };
+		9AE9A04E276DC8140075443D /* HeartRecipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE9A04D276DC8140075443D /* HeartRecipes.swift */; };
+		9AEC177A27706612003D6574 /* CoreImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEC177927706612003D6574 /* CoreImagePicker.swift */; };
+		9AEC177C27709112003D6574 /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9AEC177B27709112003D6574 /* MobileNetV2.mlmodel */; };
+		9AEC177E27709144003D6574 /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEC177D27709144003D6574 /* Classifier.swift */; };
+		9AEC178027709823003D6574 /* ImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEC177F27709823003D6574 /* ImageClassifier.swift */; };
 		9AED62E3276466B800A5DEC1 /* ExtensionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AED62E2276466B700A5DEC1 /* ExtensionsView.swift */; };
 		B971F800A72B7BD7C0F6EE78 /* Pods_YamyRecipes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57FE9F428EDC3194D6DAD61 /* Pods_YamyRecipes.framework */; };
 /* End PBXBuildFile section */
@@ -73,6 +78,12 @@
 		9A7B0ABC276B44D30082F0AA /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		9A7CDD6427631C9C0074AC38 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		9A7CDD66276360E60074AC38 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9AE9A04D276DC8140075443D /* HeartRecipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRecipes.swift; sourceTree = "<group>"; };
+		9AEC177927706612003D6574 /* CoreImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreImagePicker.swift; sourceTree = "<group>"; };
+		9AEC177B27709112003D6574 /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2.mlmodel; sourceTree = "<group>"; };
+		9AEC177D27709144003D6574 /* Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
+		9AEC177F27709823003D6574 /* ImageClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassifier.swift; sourceTree = "<group>"; };
+		9AEC17812770A228003D6574 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9AED62E2276466B700A5DEC1 /* ExtensionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsView.swift; sourceTree = "<group>"; };
 		A57FE9F428EDC3194D6DAD61 /* Pods_YamyRecipes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YamyRecipes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -100,10 +111,13 @@
 		9A05A0C027622197006C7B99 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9AEC177B27709112003D6574 /* MobileNetV2.mlmodel */,
 				9A05A0C1276221B5006C7B99 /* UserModel.swift */,
 				9A0C35AE276477DE00A8364C /* RecipesModel.swift */,
 				9A7983A3276B365100EAA01E /* MsgModel.swift */,
 				9A7B0ABC276B44D30082F0AA /* QuestionModel.swift */,
+				9AE9A04D276DC8140075443D /* HeartRecipes.swift */,
+				9AEC177D27709144003D6574 /* Classifier.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -115,6 +129,7 @@
 				9A05A0C827622C71006C7B99 /* StorageService.swift */,
 				9A7CDD6427631C9C0074AC38 /* SessionStore.swift */,
 				9A0C35B027647EE100A8364C /* RecipesViewModel.swift */,
+				9AEC177F27709823003D6574 /* ImageClassifier.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -153,6 +168,7 @@
 		9A271C702761815200677292 /* YamyRecipes */ = {
 			isa = PBXGroup;
 			children = (
+				9AEC17812770A228003D6574 /* Info.plist */,
 				9A05A0C527622917006C7B99 /* ViewModels */,
 				9A05A0C027622197006C7B99 /* Models */,
 				9A271C892761EDD800677292 /* Utils */,
@@ -204,6 +220,7 @@
 				9A05A0C327622285006C7B99 /* Extensions.swift */,
 				9AED62E2276466B700A5DEC1 /* ExtensionsView.swift */,
 				9A1763442767753E008D344C /* CookImagePicker.swift */,
+				9AEC177927706612003D6574 /* CoreImagePicker.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -334,6 +351,7 @@
 			files = (
 				9A05A0C727622934006C7B99 /* AuthViewModel.swift in Sources */,
 				9A271C81276187B800677292 /* FormField.swift in Sources */,
+				9AEC177A27706612003D6574 /* CoreImagePicker.swift in Sources */,
 				9A0C35BC2764E53500A8364C /* HeartRecipesView.swift in Sources */,
 				9A0C35B427648ACC00A8364C /* RecipesUploadView.swift in Sources */,
 				9A7CDD67276360E70074AC38 /* HomeView.swift in Sources */,
@@ -342,16 +360,20 @@
 				9A7983A4276B365100EAA01E /* MsgModel.swift in Sources */,
 				9A05A0C427622285006C7B99 /* Extensions.swift in Sources */,
 				9A271C742761815200677292 /* ContentView.swift in Sources */,
+				9AEC177E27709144003D6574 /* Classifier.swift in Sources */,
 				9AED62E3276466B800A5DEC1 /* ExtensionsView.swift in Sources */,
 				9A0C35B6276493C500A8364C /* CustomPicker.swift in Sources */,
 				9A0C35AF276477DE00A8364C /* RecipesModel.swift in Sources */,
 				9A0C35B127647EE100A8364C /* RecipesViewModel.swift in Sources */,
 				9A05A0C2276221B5006C7B99 /* UserModel.swift in Sources */,
 				9A271C8427618C0D00677292 /* SignInView.swift in Sources */,
+				9AE9A04E276DC8140075443D /* HeartRecipes.swift in Sources */,
+				9AEC177C27709112003D6574 /* MobileNetV2.mlmodel in Sources */,
 				9A0C35BA2764E51100A8364C /* RecipeSearchView.swift in Sources */,
 				9A0C35C22764E5B300A8364C /* QuestionView.swift in Sources */,
 				9A271C8B2761EDEF00677292 /* ImagePicker.swift in Sources */,
 				9A0C35C02764E59400A8364C /* CoreIndicatorsView.swift in Sources */,
+				9AEC178027709823003D6574 /* ImageClassifier.swift in Sources */,
 				9A0C35BE2764E55D00A8364C /* MyRecipesView.swift in Sources */,
 				9A271C722761815200677292 /* YamyRecipesApp.swift in Sources */,
 				9A271C882761ABFF00677292 /* SignUpView.swift in Sources */,
@@ -492,7 +514,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"YamyRecipes/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_FILE = YamyRecipes/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "이 앱의 재료 탐색 기능을 사용하기 위해서 카메라 사용을 허용해야합니다. ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -523,7 +546,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"YamyRecipes/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_FILE = YamyRecipes/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "이 앱의 재료 탐색 기능을 사용하기 위해서 카메라 사용을 허용해야합니다. ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
