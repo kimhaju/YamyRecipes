@@ -10,6 +10,7 @@ import Firebase
 
 class QuestionModel : ObservableObject {
     
+    @Published var txt = ""
     @Published var msgs : [MsgModel] = []
     @AppStorage("current_user") var user = ""
     let ref = Firestore.firestore()
@@ -50,7 +51,7 @@ class QuestionModel : ObservableObject {
     }
     
     func readAllMsgs() {
-        ref.collection("msgs").addSnapshotListener { snap, error in
+        ref.collection("msgs").order(by: "timeStamp", descending: false).addSnapshotListener { snap, error in
             
             if error != nil {
                 print(error!.localizedDescription)
@@ -72,4 +73,17 @@ class QuestionModel : ObservableObject {
         }
     }
     
+    func writeMsg() {
+        let msg = MsgModel(msg: txt, user: user, timeStamp: Date())
+        
+        let _ = try! ref.collection("msgs").addDocument(from: msg) { err in
+            
+            if err != nil {
+                print(err!.localizedDescription)
+                return
+            }
+            
+            self.txt = ""
+        }
+    }
 }
