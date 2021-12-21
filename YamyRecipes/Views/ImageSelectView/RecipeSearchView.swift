@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import Firebase
 
 // MARK: - 본체
 struct RecipeSearchView: View {
@@ -14,6 +15,7 @@ struct RecipeSearchView: View {
     @Namespace var animation
     @State var show = false
     @State private var tag : String = "전체"
+    var user: UserModel?
   
     var body: some View {
         ScrollView{
@@ -47,7 +49,7 @@ struct RecipeSearchView: View {
 
             VStack(spacing: 15){
                 ForEach(self.recipesModel.filteredRecipes){ item in
-                    RecipesCellView(recipes: item)
+                    RecipesCellView(recipes: item, user: user)
               }
           }.navigationBarTitle("레시피 검색하기")
         }.onAppear(){
@@ -80,6 +82,7 @@ struct RecipesCellView: View{
     var recipes : RecipesModel?
     @State var show = false
     @Namespace var animation
+    var user: UserModel?
     
     var body: some View {
         VStack{
@@ -108,7 +111,7 @@ struct RecipesCellView: View{
         }.background(Color("rightBlue"))
             .cornerRadius(20)
             .sheet(isPresented: self.$show){
-                RecipesDetailView(recipes: recipes, show: $show, animation: animation)
+                RecipesDetailView(recipes: recipes, show: $show, animation: animation, user: user)
         }
     }
 }
@@ -120,6 +123,7 @@ struct RecipesDetailView : View{
     var recipes : RecipesModel?
     @Binding var show : Bool
     var animation : Namespace.ID
+    var user: UserModel?
     
     var body: some View {
         ScrollView{
@@ -224,7 +228,19 @@ struct RecipesDetailView : View{
                 .fontWeight(.bold)
                 .foregroundColor(Color("butterfly"))
             
-            Text(recipes?.cook_details ?? "").multilineTextAlignment(.leading)
+            Text(recipes?.cook_details ?? "").multilineTextAlignment(.leading).lineSpacing(15)
+            
+            Spacer(minLength: 0)
+            
+            HStack{
+                if recipes?.writer == user?.uid {
+                    Button(action: {}){
+                        Text("글 수정하기")
+                    }
+                }else {
+                    Text("글 작성자가 아니기 때문에 글을 수정하거나 삭제할 권한이 없습니다.")
+                }
+            }
         }
     }
 }

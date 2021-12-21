@@ -29,9 +29,11 @@ struct HomeView: View {
                         
                         Spacer(minLength: 0)
                         
-                        Button(action: {}){
-                            WebImage(url: URL(string: user?.profileImageUrl ?? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")).resizable().renderingMode(.original).frame(width: 60, height: 60).clipShape(Circle())
-                        }
+                        Button(action: {}, label: {
+                            NavigationLink(destination: ProfileView(user: self.userSession.session)){
+                                WebImage(url: URL(string: user?.profileImageUrl ?? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")).resizable().renderingMode(.original).frame(width: 60, height: 60).clipShape(Circle())
+                            }
+                        })
                     }.padding()
                     
                     ScrollView(.vertical, showsIndicators: false){
@@ -40,7 +42,7 @@ struct HomeView: View {
                                 HStack(spacing: 10){
                                         VStack {
                                             Button(action: {}, label: {
-                                                NavigationLink(destination: RecipeSearchView().environmentObject(RecipesViewModel())){
+                                                NavigationLink(destination: RecipeSearchView(user: self.userSession.session).environmentObject(RecipesViewModel())){
                                                     Image("recipeSearch").resizable().frame(width: geometry.size.width / 2.2, height: 150).background(Color("rightBlue")).cornerRadius(10, corners: [.topLeft, .topRight]).border(width: 1, edges: [.bottom], color: .black)
                                                 }
                                             })

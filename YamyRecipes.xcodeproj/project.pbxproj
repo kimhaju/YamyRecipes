@@ -22,6 +22,7 @@
 		9A0C35C02764E59400A8364C /* CoreIndicatorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C35BF2764E59400A8364C /* CoreIndicatorsView.swift */; };
 		9A0C35C22764E5B300A8364C /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C35C12764E5B300A8364C /* QuestionView.swift */; };
 		9A10A7202771BC8500BEAB22 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A10A71F2771BC8500BEAB22 /* ChatBubble.swift */; };
+		9A10A722277200E100BEAB22 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A10A721277200E100BEAB22 /* ProfileView.swift */; };
 		9A1763452767753E008D344C /* CookImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1763442767753E008D344C /* CookImagePicker.swift */; };
 		9A271C722761815200677292 /* YamyRecipesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A271C712761815200677292 /* YamyRecipesApp.swift */; };
 		9A271C742761815200677292 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A271C732761815200677292 /* ContentView.swift */; };
@@ -64,6 +65,7 @@
 		9A0C35BF2764E59400A8364C /* CoreIndicatorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreIndicatorsView.swift; sourceTree = "<group>"; };
 		9A0C35C12764E5B300A8364C /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		9A10A71F2771BC8500BEAB22 /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
+		9A10A721277200E100BEAB22 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		9A1763442767753E008D344C /* CookImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookImagePicker.swift; sourceTree = "<group>"; };
 		9A271C6E2761815200677292 /* YamyRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YamyRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A271C712761815200677292 /* YamyRecipesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YamyRecipesApp.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				9A0C35B227648AA500A8364C /* ImageSelectView */,
 				9A271C8327618C0D00677292 /* SignInView.swift */,
+				9A10A721277200E100BEAB22 /* ProfileView.swift */,
 				9A271C872761ABFF00677292 /* SignUpView.swift */,
 				9A7CDD66276360E60074AC38 /* HomeView.swift */,
 			);
@@ -378,6 +381,7 @@
 				9A271C8B2761EDEF00677292 /* ImagePicker.swift in Sources */,
 				9A0C35C02764E59400A8364C /* CoreIndicatorsView.swift in Sources */,
 				9AEC178027709823003D6574 /* ImageClassifier.swift in Sources */,
+				9A10A722277200E100BEAB22 /* ProfileView.swift in Sources */,
 				9A0C35BE2764E55D00A8364C /* MyRecipesView.swift in Sources */,
 				9A271C722761815200677292 /* YamyRecipesApp.swift in Sources */,
 				9A271C882761ABFF00677292 /* SignUpView.swift in Sources */,
