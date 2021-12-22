@@ -143,7 +143,7 @@ class RecipesViewModel: ObservableObject {
             "cook_times": cookTimes,
             "cook_writer": userId,
             "cook_name": self.cook_name,
-            "cook_ratings": "5"
+            "ratings": "5"
         ]){ err in
             
             if err != nil {
@@ -162,9 +162,14 @@ class RecipesViewModel: ObservableObject {
     func addHeartRecipes(recipes: RecipesModel){
         
         if recipes.isAdded {
+            
+            self.recipes[getIndex(recipes: recipes, isHeartIndex: false)].isAdded = !recipes.isAdded
+            
+            self.filteredRecipes[getIndex(recipes: recipes, isHeartIndex: false)].isAdded = !recipes.isAdded
             //->리스트 삭제
             return
         }
+        self.heartRecipes.append(HeartRecipes(love_recipes: recipes, quantity: 1))
     }
     
     func getIndex(recipes : RecipesModel, isHeartIndex: Bool) -> Int {
@@ -182,4 +187,24 @@ class RecipesViewModel: ObservableObject {
         return isHeartIndex ? heartIndex : index
     }
     
+    //->이미지 수정은 잠시 보류
+    func editRecipes(recipesId: String, cookName: String, cookdetail: String, cookIndigator: String){
+        
+        db.collection("recipes").document(recipesId).updateData(
+            [
+                "cook_name" : cookName,
+                "cook_detail": cookdetail,
+                "cook_indigator": cookIndigator
+                
+            ]){ error in
+                
+                if error != nil {
+                    print("Error")
+                }else {
+                    print("성공적으로 내용을 바꿨습니다!")
+                }
+                
+        }
+
+    }
 }

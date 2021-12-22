@@ -119,128 +119,135 @@ struct RecipesCellView: View{
 
 // MARK: - 디테일 뷰
 struct RecipesDetailView : View{
-    @StateObject var recipesModel = RecipesViewModel()
     var recipes : RecipesModel?
     @Binding var show : Bool
     var animation : Namespace.ID
     var user: UserModel?
+    @State private var isLinkedActive = false
     
     var body: some View {
-        ScrollView{
-            VStack{
+        
+        NavigationView{
+            ScrollView{
                 VStack{
-                    ZStack(alignment: Alignment(horizontal: .center, vertical: .top)){
-                        WebImage(url: URL(string: recipes?.cook_images[0] ?? ""))
-                            .resizable()
-                            .scaledToFill()
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                            .frame(height: 330)
-                            .cornerRadius(40, corners: [.bottomLeft, .bottomRight])
-                            .shadow(color: Color.primary.opacity(0.3), radius: 1)
-                        
-                        HStack{
-                            Button(action: {
-                                withAnimation(.spring()){show.toggle()}
-                            }){
-                                Image(systemName: "chevron.left")
-                                    .foregroundColor(.black)
-                                    .padding()
-                                    .background(Color.white)
-                                    .clipShape(Circle())
-                            }
-                            Spacer()
+                    VStack{
+                        ZStack(alignment: Alignment(horizontal: .center, vertical: .top)){
+                            WebImage(url: URL(string: recipes?.cook_images[0] ?? ""))
+                                .resizable()
+                                .scaledToFill()
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .frame(height: 330)
+                                .cornerRadius(40, corners: [.bottomLeft, .bottomRight])
+                                .shadow(color: Color.primary.opacity(0.3), radius: 1)
                             
-                            Button(action: {
+                            HStack{
+                                Button(action: {
+                                    withAnimation(.spring()){show.toggle()}
+                                }){
+                                    Image(systemName: "chevron.left")
+                                        .foregroundColor(.black)
+                                        .padding()
+                                        .background(Color.white)
+                                        .clipShape(Circle())
+                                }
+                                Spacer()
                                 
-                            }, label: {
-                                Image(systemName: "heart")
-                                    .foregroundColor(.pink)
-                                    .padding()
-                                    .background(Color.white)
-                                    .clipShape(Circle())
-                            })
+                                Button(action: {
+                                    
+                                }, label: {
+                                    Image(systemName: recipes!.isAdded ? "heart.fill" : "heart")
+                                        .foregroundColor(.pink)
+                                        .padding()
+                                        .background(Color.white)
+                                        .clipShape(Circle())
+                                })
+                            }
+                            .padding()
+                            .padding(.top,UIApplication.shared.windows.first?.safeAreaInsets.top)
                         }
-                        .padding()
-                        .padding(.top,UIApplication.shared.windows.first?.safeAreaInsets.top)
-                    }
-                    
-                    HStack(spacing: 5){
-                        WebImage(url: URL(string: recipes?.cook_images[0] ?? "")).resizable().frame(width: 60, height: 60).cornerRadius(10)
-                        WebImage(url: URL(string: recipes?.cook_images[1] ?? "")).resizable().frame(width: 60, height: 60).cornerRadius(10)
-                        WebImage(url: URL(string: recipes?.cook_images[2] ?? "")).resizable().frame(width: 60, height: 60).cornerRadius(10)
-                        WebImage(url: URL(string: recipes?.cook_images[3] ?? "")).resizable().frame(width: 60, height: 60).cornerRadius(10)
-                    }
-                    
-                    HStack(alignment: .top){
                         
-                        VStack(alignment: .leading, spacing: 12){
-                            Text(recipes?.cook_name ?? "없는 레시피입니다.")
-                                .font(.title)
-                                .foregroundColor(Color("butterfly"))
-                                .fontWeight(.bold)
-                                .matchedGeometryEffect(id: recipes?.cook_name ?? "", in: animation)
+                        HStack(spacing: 5){
+                            WebImage(url: URL(string: recipes?.cook_images[0] ?? "")).resizable().frame(width: 60, height: 60).cornerRadius(10)
+                            WebImage(url: URL(string: recipes?.cook_images[1] ?? "")).resizable().frame(width: 60, height: 60).cornerRadius(10)
+                            WebImage(url: URL(string: recipes?.cook_images[2] ?? "")).resizable().frame(width: 60, height: 60).cornerRadius(10)
+                            WebImage(url: URL(string: recipes?.cook_images[3] ?? "")).resizable().frame(width: 60, height: 60).cornerRadius(10)
+                        }
+                        
+                        HStack(alignment: .top){
                             
-                            HStack(spacing: 5){
-                                Image(systemName: "sparkles").resizable().frame(width: 20, height: 20)
-                                Text("난이도: \(recipes?.cook_level ?? "")")
-                                    .foregroundColor(.black)
-                                    .frame(width: 120)
-                                    .matchedGeometryEffect(id: recipes?.cook_level ?? "", in: animation)
+                            VStack(alignment: .leading, spacing: 12){
+                                Text(recipes?.cook_name ?? "없는 레시피입니다.")
+                                    .font(.title)
+                                    .foregroundColor(Color("butterfly"))
+                                    .fontWeight(.bold)
+                                    .matchedGeometryEffect(id: recipes?.cook_name ?? "", in: animation)
                                 
                                 HStack(spacing: 5){
-                                    ForEach(1...5, id: \.self){ index in
-                                        Image(systemName: "star.fill")
-                                            .foregroundColor(index <= Int(recipes?.ratings ?? "") ?? 0 ? Color("butterfly") : .gray)
+                                    Image(systemName: "sparkles").resizable().frame(width: 20, height: 20)
+                                    Text("난이도: \(recipes?.cook_level ?? "")")
+                                        .foregroundColor(.black)
+                                        .frame(width: 120)
+                                        .matchedGeometryEffect(id: recipes?.cook_level ?? "", in: animation)
+                                    
+                                    HStack(spacing: 5){
+                                        ForEach(1...5, id: \.self){ index in
+                                            Image(systemName: "star.fill")
+                                                .foregroundColor(index <= Int(recipes?.ratings ?? "") ?? 0 ? Color("butterfly") : .gray)
+                                        }
                                     }
                                 }
                             }
+                            
+                            Spacer(minLength: 0)
+                            Text(recipes?.cook_tag ?? "")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("butterfly"))
                         }
-                        
-                        Spacer(minLength: 0)
-                        Text(recipes?.cook_tag ?? "")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color("butterfly"))
+                        .padding()
+                        .padding(.bottom)
                     }
-                    .padding()
-                    .padding(.bottom)
+                    .background(Color.white)
+                    .cornerRadius(20, corners: [.bottomLeft, .bottomRight])
+                    
+                    Spacer(minLength: 0)
                 }
                 .background(Color.white)
-                .cornerRadius(20, corners: [.bottomLeft, .bottomRight])
                 
-                Spacer(minLength: 0)
-            }
-            .background(Color.white)
-            
-            VStack(alignment: .leading, spacing: 15){
-                HStack(spacing: 15){
-                    Text("재료: \(recipes?.cook_indigator ?? "재료가 없습니다.")")
+                VStack(alignment: .leading, spacing: 15){
+                    HStack(spacing: 15){
+                        Text("재료: \(recipes?.cook_indigator ?? "재료가 없습니다.")")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color("butterfly"))
+                    }
+                    Spacer(minLength: 0)
+                }
+                .padding(.top)
+                
+                Text("자세한 조리법")
                     .font(.title3)
                     .fontWeight(.bold)
                     .foregroundColor(Color("butterfly"))
-                }
+                
+                Text(recipes?.cook_details ?? "").multilineTextAlignment(.leading).lineSpacing(15)
+                
                 Spacer(minLength: 0)
-            }
-            .padding(.top)
-            
-            Text("자세한 조리법")
-                .font(.title3)
-                .fontWeight(.bold)
-                .foregroundColor(Color("butterfly"))
-            
-            Text(recipes?.cook_details ?? "").multilineTextAlignment(.leading).lineSpacing(15)
-            
-            Spacer(minLength: 0)
-            
-            HStack{
-                if recipes?.writer == user?.uid {
-                    Button(action: {}){
-                        Text("글 수정하기")
-                    }
-                }else {
-                    Text("글 작성자가 아니기 때문에 글을 수정하거나 삭제할 권한이 없습니다.")
+                
+                HStack{
+                   
+                        Button(action: {}, label: {
+                            NavigationLink(destination: EditRecipesView(show: $show, animation: animation), isActive: $isLinkedActive){
+                                Text("글 수정하기")
+                            }
+                        })
+                        Button(action: {}){
+                            Text("글 삭제하기")
+                        }
                 }
             }
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
         }
     }
 }
