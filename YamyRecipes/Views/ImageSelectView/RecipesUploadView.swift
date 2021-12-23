@@ -12,7 +12,6 @@ struct RecipesUploadView: View {
     
     // MARK: - 필드 값
     @EnvironmentObject var recipesViewModel: RecipesViewModel
-    
     var user : UserModel?
     
     @State private var cookName : String = ""
@@ -29,13 +28,11 @@ struct RecipesUploadView: View {
     @State private var cookImages : [Data] = []
     
     //->업로드 체크
-    
     @State private var error: String = ""
     @State private var showingAlert = false
     @State private var alertTitle : String = "글을 업로드 하는데 실패했습니다.정보를 확인해주세요."
     
     // MARK: - helper
-
     func errorCheck() -> String? {
         if cookName.trimmingCharacters(in: .whitespaces).isEmpty || cookIndigators.trimmingCharacters(in: .whitespaces).isEmpty || cook_details.trimmingCharacters(in: .whitespaces).isEmpty {
             
@@ -85,7 +82,7 @@ struct RecipesUploadView: View {
             ScrollView{
                 VStack(alignment: .leading ,spacing: 10){
                     Group{
-                        FormField(value: $recipesViewModel.cook_name, icon: "sparkles", placeholder: "요리 제목").padding()
+                        FormField(value: $recipesViewModel.cook_name, icon: "sparkles", placeholder: "요리 제목", color: "salmon").padding()
                         HStack(spacing: 10){
                             Text("요리 태그: ").font(.footnote).padding(.leading,5)
                             ForEach(cookTags, id: \.self){ item in
@@ -205,7 +202,7 @@ struct RecipesUploadView: View {
                                 
                                 self.showingAlert = true
                             }){
-                                Text("레시피 업로드").font(.title).modifier(ButtonModifier())
+                                Text("레시피 업로드").font(.title).modifier(ButtonModifier(color: "salmon"))
                             }.alert(isPresented: $showingAlert){
                                 Alert(title: Text("게시글 업로드"), message: Text("게시글이 업로드 되었습니다 확인해주세요!"), dismissButton: .default(Text("X")))
                             }

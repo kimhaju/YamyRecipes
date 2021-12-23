@@ -234,16 +234,21 @@ struct RecipesDetailView : View{
                 
                 Spacer(minLength: 0)
                 
-                HStack{
-                   
+                VStack{
+                    
+                    if(user?.uid == recipes?.cook_writer){
                         Button(action: {}, label: {
-                            NavigationLink(destination: EditRecipesView(show: $show, animation: animation), isActive: $isLinkedActive){
-                                Text("글 수정하기")
+                            NavigationLink(destination: EditRecipesView(recipes: recipes, show: $show, animation: animation, user: user).environmentObject(RecipesViewModel()), isActive: $isLinkedActive){
+                                Text("글 수정하기").modifier(ButtonModifier(color: "butterfly"))
                             }
                         })
                         Button(action: {}){
-                            Text("글 삭제하기")
+                            Text("글 삭제하기").modifier(ButtonModifier(color: "butterfly"))
                         }
+                    }else {
+                        Text("작성자만 글 삭제, 수정 권한이 있습니다.")
+                    }
+                        
                 }
             }
             .navigationBarTitle("")

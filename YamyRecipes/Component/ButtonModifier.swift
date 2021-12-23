@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ButtonModifier: ViewModifier {
+    
+    var color : String
+    
     func body(content: Content) -> some View {
         
         content.frame(minWidth: 0, maxWidth: .infinity)
@@ -15,7 +18,7 @@ struct ButtonModifier: ViewModifier {
             .padding()
             .foregroundColor(.white)
             .font(.system(size: 14, weight: .bold))
-            .background(Color("salmon"))
+            .background(Color(color))
             .clipShape(Capsule())
         
     }

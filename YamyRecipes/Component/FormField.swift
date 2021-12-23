@@ -12,11 +12,12 @@ struct FormField: View {
     var icon : String
     var placeholder : String
     var isSecure = false
+    var color : String
     
     var body: some View {
         Group{
             HStack{
-                Image(systemName: icon).padding().foregroundColor(Color("salmon"))
+                Image(systemName: icon).padding().foregroundColor(Color(color))
                 Group{
                     if isSecure {
                         SecureField(placeholder, text: $value)
@@ -24,14 +25,14 @@ struct FormField: View {
                         TextField(placeholder, text: $value)
                     }
                 }.font(Font.system(size: 20, design: .monospaced))
-                    .foregroundColor(Color("salmon"))
+                    .foregroundColor(Color(color))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .multilineTextAlignment(.leading)
                     .disableAutocorrection(true)
                     .autocapitalization(.none)
                 
             }
-            .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color("salmon"), lineWidth: 4))
+            .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color(color), lineWidth: 4))
         }
     }
 }

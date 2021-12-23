@@ -87,12 +87,12 @@ struct SignUpView: View {
                         }
                       
                         Group{
-                            FormField(value: $email, icon: "envelope.fill", placeholder: "E-mail")
-                            FormField(value: $username, icon: "person.fill", placeholder: "user-name")
-                            FormField(value: $password, icon: "lock.fill", placeholder: "password", isSecure: true).padding(.top,1)
+                            FormField(value: $email, icon: "envelope.fill", placeholder: "E-mail",color: "salmon")
+                            FormField(value: $username, icon: "person.fill", placeholder: "user-name",color: "salmon")
+                            FormField(value: $password, icon: "lock.fill", placeholder: "password", isSecure: true,color: "salmon").padding(.top,1)
                         }
                         Button(action: signUp){
-                            Text("Sign Up").font(.title).modifier(ButtonModifier())
+                            Text("Sign Up").font(.title).modifier(ButtonModifier(color: "salmon"))
                         }.alert(isPresented: $showingAlert){
                             Alert(title: Text(alertTitle), message: Text(error), dismissButton: .default(Text("ok")))
                         }

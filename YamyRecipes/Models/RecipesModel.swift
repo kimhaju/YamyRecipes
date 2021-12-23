@@ -18,7 +18,7 @@ struct RecipesModel: Identifiable {
     var cook_level: String
     var cook_details: String
     var cook_images : [String]
-    var writer: String
+    var cook_writer: String
     
     //->아이템 모델
     var isAdded: Bool = false

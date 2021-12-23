@@ -52,12 +52,12 @@ class RecipesViewModel: ObservableObject {
                 let cookTime = data["cook_time"] as? String ?? ""
                 let cookIndigator = data["cook_indigator"] as? String ?? ""
                 let ratings = data["ratings"] as? String ?? ""
-                let writer = data["writer"] as? String ?? ""
+                let writer = data["cook_writer"] as? String ?? ""
                 let cookLevel = data["cook_level"] as? String ?? ""
                 let cookDetail = data["cook_details"] as? String ?? ""
                 let cookImages = data["cook_images"] as? Array ?? [""]
                 
-                return RecipesModel(id: id, cook_name: cookName, cook_tag: cookTag, cook_times: cookTime, cook_indigator: cookIndigator, ratings: ratings, cook_level: cookLevel, cook_details: cookDetail, cook_images: cookImages, writer: writer)
+                return RecipesModel(id: id, cook_name: cookName, cook_tag: cookTag, cook_times: cookTime, cook_indigator: cookIndigator, ratings: ratings, cook_level: cookLevel, cook_details: cookDetail, cook_images: cookImages, cook_writer: writer)
                  
             }
             self.filteredRecipes = self.recipes
@@ -89,12 +89,12 @@ class RecipesViewModel: ObservableObject {
                 let cookTime = data["cook_time"] as? String ?? ""
                 let cookIndigator = data["cook_indigator"] as? String ?? ""
                 let ratings = data["ratings"] as? String ?? ""
-                let writer = data["writer"] as? String ?? ""
+                let writer = data["cook_writer"] as? String ?? ""
                 let cookLevel = data["cook_level"] as? String ?? ""
                 let cookDetail = data["cook_details"] as? String ?? ""
                 let cookImages = data["cook_images"] as? Array ?? [""]
                 
-                return RecipesModel(id: id, cook_name: cookName, cook_tag: cookTag, cook_times: cookTime, cook_indigator: cookIndigator, ratings: ratings, cook_level: cookLevel, cook_details: cookDetail, cook_images: cookImages, writer: writer)
+                return RecipesModel(id: id, cook_name: cookName, cook_tag: cookTag, cook_times: cookTime, cook_indigator: cookIndigator, ratings: ratings, cook_level: cookLevel, cook_details: cookDetail, cook_images: cookImages, cook_writer: writer)
             }
         }
     }
@@ -188,23 +188,27 @@ class RecipesViewModel: ObservableObject {
     }
     
     //->이미지 수정은 잠시 보류
-    func editRecipes(recipesId: String, cookName: String, cookdetail: String, cookIndigator: String){
-        
+    
+    func editRecipes(recipesId: String, cookName: String, cookdetail: String, cookIndigator: String, cookLevel: String,
+                     cookTag: String, cookTime: String){
+    
         db.collection("recipes").document(recipesId).updateData(
             [
                 "cook_name" : cookName,
-                "cook_detail": cookdetail,
+                "cook_details": cookdetail,
+                "cook_level": cookLevel,
+                "cook_tag": cookTag,
+                "cook_time": cookTime,
                 "cook_indigator": cookIndigator
-                
+    
             ]){ error in
-                
+    
                 if error != nil {
                     print("Error")
                 }else {
                     print("성공적으로 내용을 바꿨습니다!")
                 }
-                
-        }
-
+            }
     }
 }
+

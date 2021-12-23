@@ -60,11 +60,11 @@ struct SignInView: View {
                             Text("YamyRecipes!").font(.system(size: 32, weight: .heavy)).foregroundColor(Color("salmon"))
                             Text("Sign in").font(.system(size: 16, weight: .medium)).foregroundColor(Color("salmon"))
                         }
-                        FormField(value: $email, icon: "envelope.fill", placeholder: "E-mail")
-                        FormField(value: $password, icon: "lock.fill", placeholder: "password", isSecure: true).padding(.top,1)
+                        FormField(value: $email, icon: "envelope.fill", placeholder: "E-mail",color: "salmon")
+                        FormField(value: $password, icon: "lock.fill", placeholder: "password", isSecure: true,color: "salmon").padding(.top,1)
                         
                         Button(action: signIn){
-                            Text("Sign In").font(.title).modifier(ButtonModifier())
+                            Text("Sign In").font(.title).modifier(ButtonModifier(color: "salmon"))
                         }.alert(isPresented: $showingAlert){
                             Alert(title: Text(alertTitle), message: Text(error), dismissButton: .default(Text("ok")))
                         }
