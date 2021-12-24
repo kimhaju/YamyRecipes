@@ -191,7 +191,7 @@ class RecipesViewModel: ObservableObject {
     
     func editRecipes(recipesId: String, cookName: String, cookdetail: String, cookIndigator: String, cookLevel: String,
                      cookTag: String, cookTime: String){
-    
+        
         db.collection("recipes").document(recipesId).updateData(
             [
                 "cook_name" : cookName,
@@ -200,15 +200,25 @@ class RecipesViewModel: ObservableObject {
                 "cook_tag": cookTag,
                 "cook_time": cookTime,
                 "cook_indigator": cookIndigator
-    
+                
             ]){ error in
-    
+                
                 if error != nil {
                     print("Error")
                 }else {
                     print("성공적으로 내용을 바꿨습니다!")
                 }
             }
+    }
+    
+    func deleteRecipes(deleteId: String){
+        db.collection("recipes").document(deleteId).delete { error in
+            if error != nil {
+                print("삭제하는데 문제가 생겼습니다.\(error?.localizedDescription)")
+            }else {
+                print("레시피 삭제 완료")
+            }
+        }
     }
 }
 

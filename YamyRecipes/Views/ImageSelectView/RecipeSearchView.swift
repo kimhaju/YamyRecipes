@@ -16,6 +16,7 @@ struct RecipeSearchView: View {
     @State var show = false
     @State private var tag : String = "전체"
     var user: UserModel?
+   
   
     var body: some View {
         ScrollView{
@@ -111,7 +112,7 @@ struct RecipesCellView: View{
         }.background(Color("rightBlue"))
             .cornerRadius(20)
             .sheet(isPresented: self.$show){
-                RecipesDetailView(recipes: recipes, show: $show, animation: animation, user: user)
+                RecipesDetailView(recipes: recipes, show: $show, animation: animation, user: user).environmentObject(RecipesViewModel())
         }
     }
 }
@@ -124,6 +125,9 @@ struct RecipesDetailView : View{
     var animation : Namespace.ID
     var user: UserModel?
     @State private var isLinkedActive = false
+    @State private var showingAlert = false
+    @State private var badSelect = 0
+    @EnvironmentObject var recipesViewModel: RecipesViewModel
     
     var body: some View {
         
@@ -242,13 +246,14 @@ struct RecipesDetailView : View{
                                 Text("글 수정하기").modifier(ButtonModifier(color: "butterfly"))
                             }
                         })
-                        Button(action: {}){
+                        Button(action: {
+                            recipesViewModel.deleteRecipes(deleteId: recipes?.id ?? "")
+                        }){
                             Text("글 삭제하기").modifier(ButtonModifier(color: "butterfly"))
                         }
                     }else {
-                        Text("작성자만 글 삭제, 수정 권한이 있습니다.")
+                        Text("글 신고하기").modifier(ButtonModifier(color: "butterfly"))
                     }
-                        
                 }
             }
             .navigationBarTitle("")
@@ -257,3 +262,8 @@ struct RecipesDetailView : View{
     }
 }
 
+//Button(action: {
+//
+//}){
+//    Text("글 신고하기").modifier(ButtonModifier(color: "butterfly"))
+//}
