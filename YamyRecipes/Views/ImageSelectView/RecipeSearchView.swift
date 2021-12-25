@@ -248,11 +248,23 @@ struct RecipesDetailView : View{
                         })
                         Button(action: {
                             recipesViewModel.deleteRecipes(deleteId: recipes?.id ?? "")
-                        }){
+                        }){ //->여기에 진짜 삭제할건지 한번더 묻는 시스템 만들어야 겠다....
                             Text("글 삭제하기").modifier(ButtonModifier(color: "butterfly"))
                         }
-                    }else {
-                        Text("글 신고하기").modifier(ButtonModifier(color: "butterfly"))
+                    } else {
+                        Button(action: {self.showingAlert = true}){
+                            Text("글 신고하기").modifier(ButtonModifier(color: "butterfly"))
+                        }.actionSheet(isPresented: $showingAlert) {
+                            ActionSheet(title: Text("신고사유"), message: Text("신고사유를 선택해주세요. 올바른 신고가 아닐시 삭제조치는 취해지지 않습니다."), buttons: [
+                                
+                                .default(Text("요리관련 글이 아닌 게시물")){},
+                                .default(Text("미풍양속을 해치는 게시물")){},
+                                .default(Text("저작권에 어긋나는 글, 이미지")){},
+                                .default(Text("같은 게시물 여러번 도배")){},
+                                .default(Text("기타사유로 적절하지 못하다고 판단되는 게시물")){}
+                            ])
+                        }
+                        
                     }
                 }
             }
@@ -260,6 +272,8 @@ struct RecipesDetailView : View{
             .navigationBarHidden(true)
         }
     }
+    
+    
 }
 
 //Button(action: {
