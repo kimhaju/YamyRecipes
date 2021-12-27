@@ -22,6 +22,10 @@ struct RecipesModel: Identifiable {
     
     //->아이템 모델
     var isAdded: Bool = false
+    
+    //->신고시스템 삐용삐용
+    
+    var report: Bool
 }
 
 var cookTags = ["한식", "중식", "양식", "일식", "베이커리", "간식"]

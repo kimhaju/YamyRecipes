@@ -246,22 +246,32 @@ struct RecipesDetailView : View{
                                 Text("글 수정하기").modifier(ButtonModifier(color: "butterfly"))
                             }
                         })
-                        Button(action: {
-                            recipesViewModel.deleteRecipes(deleteId: recipes?.id ?? "")
-                        }){ //->여기에 진짜 삭제할건지 한번더 묻는 시스템 만들어야 겠다....
+//                        Button(action: {
+//                            recipesViewModel.deleteRecipes(deleteId: recipes?.id ?? "")
+//                        }){ //->여기에 진짜 삭제할건지 한번더 묻는 시스템 만들어야 겠다....
+//                            Text("글 삭제하기").modifier(ButtonModifier(color: "butterfly"))
+//                        }
+                        Button(action: {self.showingAlert = true}){
                             Text("글 삭제하기").modifier(ButtonModifier(color: "butterfly"))
+                        }.actionSheet(isPresented: $showingAlert){
+                            ActionSheet(title: Text("삭제하기"), message: Text("정말로 삭제하시겠습니까?"), buttons: [
+                                .default(Text("네")){recipesViewModel.deleteRecipes(deleteId: recipes?.id ?? "")},
+                                .default(Text("아니요")){}
+                            
+                            ])
                         }
+                        
                     } else {
                         Button(action: {self.showingAlert = true}){
                             Text("글 신고하기").modifier(ButtonModifier(color: "butterfly"))
                         }.actionSheet(isPresented: $showingAlert) {
                             ActionSheet(title: Text("신고사유"), message: Text("신고사유를 선택해주세요. 올바른 신고가 아닐시 삭제조치는 취해지지 않습니다."), buttons: [
                                 
-                                .default(Text("요리관련 글이 아닌 게시물")){},
-                                .default(Text("미풍양속을 해치는 게시물")){},
-                                .default(Text("저작권에 어긋나는 글, 이미지")){},
-                                .default(Text("같은 게시물 여러번 도배")){},
-                                .default(Text("기타사유로 적절하지 못하다고 판단되는 게시물")){}
+                                .default(Text("요리관련 글이 아닌 게시물")){recipesViewModel.reportRecipes(recipeId: recipes?.id ?? "")},
+                                .default(Text("미풍양속을 해치는 게시물")){recipesViewModel.reportRecipes(recipeId: recipes?.id ?? "")},
+                                .default(Text("저작권에 어긋나는 글, 이미지")){recipesViewModel.reportRecipes(recipeId: recipes?.id ?? "")},
+                                .default(Text("같은 게시물 여러번 도배")){recipesViewModel.reportRecipes(recipeId: recipes?.id ?? "")},
+                                .default(Text("기타사유로 적절하지 못하다고 판단되는 게시물")){recipesViewModel.reportRecipes(recipeId: recipes?.id ?? "")}
                             ])
                         }
                         

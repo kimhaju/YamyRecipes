@@ -37,7 +37,7 @@ class RecipesViewModel: ObservableObject {
     @Published var heartRecipes : [HeartRecipes] = []
    
     func getRecipes() {
-        db.collection("recipes").addSnapshotListener { snapshot, error in
+        db.collection("recipes").whereField("report", isEqualTo: false).addSnapshotListener { snapshot, error in
             
             guard let documents = snapshot?.documents else {
                 print("데이터를 찾을수 없습니다.")
@@ -56,8 +56,9 @@ class RecipesViewModel: ObservableObject {
                 let cookLevel = data["cook_level"] as? String ?? ""
                 let cookDetail = data["cook_details"] as? String ?? ""
                 let cookImages = data["cook_images"] as? Array ?? [""]
+                let report = data["report"] as? Bool ?? false
                 
-                return RecipesModel(id: id, cook_name: cookName, cook_tag: cookTag, cook_times: cookTime, cook_indigator: cookIndigator, ratings: ratings, cook_level: cookLevel, cook_details: cookDetail, cook_images: cookImages, cook_writer: writer)
+                return RecipesModel(id: id, cook_name: cookName, cook_tag: cookTag, cook_times: cookTime, cook_indigator: cookIndigator, ratings: ratings, cook_level: cookLevel, cook_details: cookDetail, cook_images: cookImages, cook_writer: writer, report: report)
                  
             }
             self.filteredRecipes = self.recipes
@@ -93,8 +94,9 @@ class RecipesViewModel: ObservableObject {
                 let cookLevel = data["cook_level"] as? String ?? ""
                 let cookDetail = data["cook_details"] as? String ?? ""
                 let cookImages = data["cook_images"] as? Array ?? [""]
+                let report = data["report"] as? Bool ?? false
                 
-                return RecipesModel(id: id, cook_name: cookName, cook_tag: cookTag, cook_times: cookTime, cook_indigator: cookIndigator, ratings: ratings, cook_level: cookLevel, cook_details: cookDetail, cook_images: cookImages, cook_writer: writer)
+                return RecipesModel(id: id, cook_name: cookName, cook_tag: cookTag, cook_times: cookTime, cook_indigator: cookIndigator, ratings: ratings, cook_level: cookLevel, cook_details: cookDetail, cook_images: cookImages, cook_writer: writer, report: report)
             }
         }
     }
@@ -143,7 +145,8 @@ class RecipesViewModel: ObservableObject {
             "cook_times": cookTimes,
             "cook_writer": userId,
             "cook_name": self.cook_name,
-            "ratings": "5"
+            "ratings": "5",
+            "report" : false
         ]){ err in
             
             if err != nil {
@@ -218,6 +221,20 @@ class RecipesViewModel: ObservableObject {
             }else {
                 print("레시피 삭제 완료")
             }
+        }
+    }
+    
+    //->신고 접수
+    func reportRecipes(recipeId: String){
+        db.collection("recipes").document(recipeId).updateData([
+            "report" : true
+        ]){ error in
+            if error != nil {
+                print("Error")
+            }else {
+                print("신고 접수 완료 ")
+            }
+            
         }
     }
 }
