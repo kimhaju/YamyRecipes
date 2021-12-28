@@ -159,37 +159,7 @@ class RecipesViewModel: ObservableObject {
             
         }
     }
-    
-    //->마음에든 레시피 표시
-    
-    func addHeartRecipes(recipes: RecipesModel){
-        
-        if recipes.isAdded {
-            
-            self.recipes[getIndex(recipes: recipes, isHeartIndex: false)].isAdded = !recipes.isAdded
-            
-            self.filteredRecipes[getIndex(recipes: recipes, isHeartIndex: false)].isAdded = !recipes.isAdded
-            //->리스트 삭제
-            return
-        }
-        self.heartRecipes.append(HeartRecipes(love_recipes: recipes, quantity: 1))
-    }
-    
-    func getIndex(recipes : RecipesModel, isHeartIndex: Bool) -> Int {
-        
-        let index = self.recipes.firstIndex { (item1) -> Bool in
-            
-            return recipes.id == item1.id
-        } ?? 0
-        
-        let heartIndex = self.heartRecipes.firstIndex { (item1) -> Bool in
-            
-            return recipes.id == item1.love_recipes.id
-        } ?? 0
-        
-        return isHeartIndex ? heartIndex : index
-    }
-    
+
     //->이미지 수정은 잠시 보류
     
     func editRecipes(recipesId: String, cookName: String, cookdetail: String, cookIndigator: String, cookLevel: String,
@@ -237,5 +207,26 @@ class RecipesViewModel: ObservableObject {
             
         }
     }
+    
+    func userHeartRecipes(userID: String, cookDetail: String, cookImage: [String], cookIndigator: String, cookLevel: String, cookTag: String
+                          ,cookTime: String, cookWriter: String, cookName: String, rating: String, isHeart: Bool){
+        let ref = Database.database().reference()
+        
+        ref.child("users").child(userID).setValue([
+            "cook_details" : cookDetail,
+            "cook_images" : cookImage,
+            "cook_indigator" : cookIndigator,
+            "cook_level" : cookLevel,
+            "cook_tag": cookTag,
+            "cook_times": cookTime,
+            "cook_writer": cookWriter,
+            "cook_name": cookName,
+            "ratings": rating,
+            "is_heart": isHeart,
+            "report" : false
+        ])
+    }
 }
+
+
 

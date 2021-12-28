@@ -128,7 +128,11 @@ struct RecipesDetailView : View{
     @State private var showingAlert = false
     @State private var badSelect = 0
     @EnvironmentObject var recipesViewModel: RecipesViewModel
-    
+
+//    func myHeartRecipes() {
+//        recipesViewModel.userHeartRecipes(userID: user?.uid ?? "", cookDetail: recipes?.cook_details ?? "", cookImage: recipes?.cook_images!, cookIndigator: recipes?.cook_indigator ?? "", cookLevel: recipes?.cook_level ?? "", cookTag: recipes?.cook_tag ?? "", cookTime: recipes?.cook_times ?? "", cookWriter: recipes?.cook_writer ?? "", cookName: recipes?.cook_name ?? "", rating: recipes?.ratings ?? "", isHeart: true)
+//    }
+
     var body: some View {
         
         NavigationView{
@@ -159,7 +163,7 @@ struct RecipesDetailView : View{
                                 Button(action: {
                                     
                                 }, label: {
-                                    Image(systemName: recipes!.isAdded ? "heart.fill" : "heart")
+                                    Image(systemName: "heart.fill")
                                         .foregroundColor(.pink)
                                         .padding()
                                         .background(Color.white)
