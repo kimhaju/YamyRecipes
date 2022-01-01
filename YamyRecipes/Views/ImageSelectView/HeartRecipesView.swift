@@ -54,9 +54,14 @@ struct HeartCellView: View {
                 }.background(Color("butterfly"))
                     .clipShape(Circle())
             }
-        }
+        }.navigationTitle("\(user?.username ?? "")의 관심 레시피")
+            .sheet(isPresented: self.$show){
+                RecipesDetailView(recipes: recipes, show: $show, animation: animation, user: user).environmentObject(RecipesViewModel())
+            }
     }
 }
+
+
 
 //struct HeartRecipesView_Previews: PreviewProvider {
 //    static var previews: some View {
