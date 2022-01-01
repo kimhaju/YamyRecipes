@@ -127,14 +127,14 @@ struct RecipesDetailView : View{
     @State private var isLinkedActive = false
     @State private var showingAlert = false
     @State private var badSelect = 0
+    @State private var heartAny = false
     @EnvironmentObject var recipesViewModel: RecipesViewModel
-
-//    func myHeartRecipes() {
-//        recipesViewModel.userHeartRecipes(userID: user?.uid ?? "", cookDetail: recipes?.cook_details ?? "", cookImage: recipes?.cook_images!, cookIndigator: recipes?.cook_indigator ?? "", cookLevel: recipes?.cook_level ?? "", cookTag: recipes?.cook_tag ?? "", cookTime: recipes?.cook_times ?? "", cookWriter: recipes?.cook_writer ?? "", cookName: recipes?.cook_name ?? "", rating: recipes?.ratings ?? "", isHeart: true)
-//    }
+    
+    func myHeartRecipes() {
+        recipesViewModel.userHeartRecipes(userID: user?.uid ?? "", cookDetail: recipes?.cook_details ?? "", cookImage: [recipes!.cook_images[0], recipes!.cook_images[1], recipes!.cook_images[2], recipes!.cook_images[3]], cookIndigator: recipes?.cook_indigator ?? "", cookLevel: recipes?.cook_level ?? "", cookTag: recipes?.cook_tag ?? "", cookTime: recipes?.cook_times ?? "", cookWriter: recipes?.cook_writer ?? "", cookName: recipes?.cook_name ?? "", rating: recipes?.ratings ?? "", isHeart: true)
+    }
 
     var body: some View {
-        
         NavigationView{
             ScrollView{
                 VStack{
@@ -161,7 +161,7 @@ struct RecipesDetailView : View{
                                 Spacer()
                                 
                                 Button(action: {
-                                    
+                                    myHeartRecipes()
                                 }, label: {
                                     Image(systemName: "heart.fill")
                                         .foregroundColor(.pink)
@@ -250,11 +250,7 @@ struct RecipesDetailView : View{
                                 Text("글 수정하기").modifier(ButtonModifier(color: "butterfly"))
                             }
                         })
-//                        Button(action: {
-//                            recipesViewModel.deleteRecipes(deleteId: recipes?.id ?? "")
-//                        }){ //->여기에 진짜 삭제할건지 한번더 묻는 시스템 만들어야 겠다....
-//                            Text("글 삭제하기").modifier(ButtonModifier(color: "butterfly"))
-//                        }
+
                         Button(action: {self.showingAlert = true}){
                             Text("글 삭제하기").modifier(ButtonModifier(color: "butterfly"))
                         }.actionSheet(isPresented: $showingAlert){

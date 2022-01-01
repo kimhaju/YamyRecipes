@@ -34,7 +34,7 @@ class RecipesViewModel: ObservableObject {
     @Published var selectRecipes = [RecipesModel]()
     
     //->마음에 든 레시피 표시
-    @Published var heartRecipes : [HeartRecipes] = []
+    @Published var heartRecipes = [RecipesModel]()
    
     func getRecipes() {
         db.collection("recipes").whereField("report", isEqualTo: false).addSnapshotListener { snapshot, error in
@@ -57,8 +57,9 @@ class RecipesViewModel: ObservableObject {
                 let cookDetail = data["cook_details"] as? String ?? ""
                 let cookImages = data["cook_images"] as? Array ?? [""]
                 let report = data["report"] as? Bool ?? false
-                
-                return RecipesModel(id: id, cook_name: cookName, cook_tag: cookTag, cook_times: cookTime, cook_indigator: cookIndigator, ratings: ratings, cook_level: cookLevel, cook_details: cookDetail, cook_images: cookImages, cook_writer: writer, report: report)
+                let isHeart = data["is_heart"] as? Bool ??  false
+ 
+                return RecipesModel(id: id, cook_name: cookName, cook_tag: cookTag, cook_times: cookTime, cook_indigator: cookIndigator, ratings: ratings, cook_level: cookLevel, cook_details: cookDetail, cook_images: cookImages, cook_writer: writer, is_heart: isHeart, report: report)
                  
             }
             self.filteredRecipes = self.recipes
@@ -95,8 +96,9 @@ class RecipesViewModel: ObservableObject {
                 let cookDetail = data["cook_details"] as? String ?? ""
                 let cookImages = data["cook_images"] as? Array ?? [""]
                 let report = data["report"] as? Bool ?? false
+                let isHeart = data["is_heart"] as? Bool ?? false
                 
-                return RecipesModel(id: id, cook_name: cookName, cook_tag: cookTag, cook_times: cookTime, cook_indigator: cookIndigator, ratings: ratings, cook_level: cookLevel, cook_details: cookDetail, cook_images: cookImages, cook_writer: writer, report: report)
+                return RecipesModel(id: id, cook_name: cookName, cook_tag: cookTag, cook_times: cookTime, cook_indigator: cookIndigator, ratings: ratings, cook_level: cookLevel, cook_details: cookDetail, cook_images: cookImages, cook_writer: writer, is_heart: isHeart, report: report)
             }
         }
     }
@@ -146,7 +148,8 @@ class RecipesViewModel: ObservableObject {
             "cook_writer": userId,
             "cook_name": self.cook_name,
             "ratings": "5",
-            "report" : false
+            "report" : false,
+            "is_heart": false
         ]){ err in
             
             if err != nil {
@@ -210,21 +213,66 @@ class RecipesViewModel: ObservableObject {
     
     func userHeartRecipes(userID: String, cookDetail: String, cookImage: [String], cookIndigator: String, cookLevel: String, cookTag: String
                           ,cookTime: String, cookWriter: String, cookName: String, rating: String, isHeart: Bool){
-        let ref = Database.database().reference()
-        
-        ref.child("users").child(userID).setValue([
-            "cook_details" : cookDetail,
+       
+        db.collection("users").document(userID).collection("heart_recipes").document().setData([
+            "cook_name":cookName,
             "cook_images" : cookImage,
-            "cook_indigator" : cookIndigator,
-            "cook_level" : cookLevel,
-            "cook_tag": cookTag,
-            "cook_times": cookTime,
             "cook_writer": cookWriter,
-            "cook_name": cookName,
+            "cook_details": cookDetail,
+            "cook_indigator": cookIndigator,
+            "cook_level": cookLevel,
+            "cook_times": cookTime,
             "ratings": rating,
-            "is_heart": isHeart,
-            "report" : false
+            "cook_tag": cookTag,
+            "report": false,
+            "is_heart": isHeart
         ])
+    }
+    
+    func deleteHeartRecipes(recipeId: String, userID: String){
+        db.collection("users").document(userID).collection("heart_recipes").document(recipeId).delete { error in
+            if error != nil {
+                print("삭제하는데 문제가 생겼습니다.")
+            }else {
+                print("삭제 완료")
+            }
+        }
+    }
+    
+    func getHeartRecipes(userID: String){
+        db.collection("users").document(userID).collection("heart_recipes").addSnapshotListener { snapshot, error in
+            
+            guard let documents = snapshot?.documents else {
+                print("데이터를 찾을 수 없습니다.")
+                return
+            }
+            
+            self.heartRecipes = documents.map { snap in
+                let data = snap.data()
+                let id = snap.documentID
+                
+                let cookName = data["cook_name"] as? String ?? ""
+                let cookTag = data["cook_tag"] as? String ?? ""
+                let cookTime = data["cook_time"] as? String ?? ""
+                let cookIndigator = data["cook_indigator"] as? String ?? ""
+                let ratings = data["ratings"] as? String ?? ""
+                let writer = data["cook_writer"] as? String ?? ""
+                let cookLevel = data["cook_level"] as? String ?? ""
+                let cookDetail = data["cook_details"] as? String ?? ""
+                let cookImages = data["cook_images"] as? Array ?? [""]
+                let report = data["report"] as? Bool ?? false
+                let isHeart = data["is_heart"] as? Bool ?? false
+                
+                return RecipesModel(id: id, cook_name: cookName, cook_tag: cookTag, cook_times: cookTime, cook_indigator: cookIndigator, ratings: ratings, cook_level: cookLevel, cook_details: cookDetail, cook_images: cookImages, cook_writer: writer, is_heart: isHeart, report: report)
+
+            }
+        }
+    }
+    //->이미 있는 레시피 검증 메서드 만들자 ㅅㅂ
+    //->이름은 같을수 있어도 디테일은 다를테니까 이름과 디테일로 판단
+    func checkHeartRecipes(cookDetail: String){
+        
+    
     }
 }
 

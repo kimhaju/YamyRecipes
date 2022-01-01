@@ -21,7 +21,7 @@ struct RecipesModel: Identifiable {
     var cook_writer: String
     
     //->아이템 모델
-    var isAdded: Bool = false
+    var is_heart: Bool 
     
     //->신고시스템 삐용삐용
     
