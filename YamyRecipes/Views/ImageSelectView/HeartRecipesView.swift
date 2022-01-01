@@ -51,7 +51,7 @@ struct HeartCellView: View {
                         .font(.body)
                         .foregroundColor(.white)
                         .padding(14)
-                }.background(Color("butterfly"))
+                }.background(Color("mint"))
                     .clipShape(Circle())
             }
         }.navigationTitle("\(user?.username ?? "")의 관심 레시피")
