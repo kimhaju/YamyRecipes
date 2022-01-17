@@ -190,7 +190,7 @@ class RecipesViewModel: ObservableObject {
     func deleteRecipes(deleteId: String){
         db.collection("recipes").document(deleteId).delete { error in
             if error != nil {
-                print("삭제하는데 문제가 생겼습니다.\(error?.localizedDescription)")
+                print("삭제하는데 문제가 생겼습니다.")
             }else {
                 print("레시피 삭제 완료")
             }
@@ -268,12 +268,45 @@ class RecipesViewModel: ObservableObject {
             }
         }
     }
-    //->이미 있는 레시피 검증 메서드 만들자 ㅅㅂ
+    //->이미 있는 레시피 검증 메서드 만들자 
     //->이름은 같을수 있어도 디테일은 다를테니까 이름과 디테일로 판단
     func checkHeartRecipes(cookDetail: String){
         
     
     }
+    
+    func writeGetRecipes(userID: String, writeID: String){
+        db.collection("recipes").whereField(writeID, isEqualTo: userID).addSnapshotListener { snapshot, error in
+            
+        }
+    }
+    
+//    db.collection("recipes").whereField("cook_tag", isEqualTo: tag).addSnapshotListener { snapshot, error in
+//
+//        guard let documents = snapshot?.documents else {
+//            print("데이터를 찾을 수 없습니다.")
+//            return
+//        }
+//
+//        self.selectRecipes = documents.map { snap -> RecipesModel in
+//            let data = snap.data()
+//
+//            let id = snap.documentID
+//            let cookName = data["cook_name"] as? String ?? ""
+//            let cookTag = data["cook_tag"] as? String ?? ""
+//            let cookTime = data["cook_time"] as? String ?? ""
+//            let cookIndigator = data["cook_indigator"] as? String ?? ""
+//            let ratings = data["ratings"] as? String ?? ""
+//            let writer = data["cook_writer"] as? String ?? ""
+//            let cookLevel = data["cook_level"] as? String ?? ""
+//            let cookDetail = data["cook_details"] as? String ?? ""
+//            let cookImages = data["cook_images"] as? Array ?? [""]
+//            let report = data["report"] as? Bool ?? false
+//            let isHeart = data["is_heart"] as? Bool ?? false
+//
+//            return RecipesModel(id: id, cook_name: cookName, cook_tag: cookTag, cook_times: cookTime, cook_indigator: cookIndigator, ratings: ratings, cook_level: cookLevel, cook_details: cookDetail, cook_images: cookImages, cook_writer: writer, is_heart: isHeart, report: report)
+//        }
+//    }
 }
 
 
