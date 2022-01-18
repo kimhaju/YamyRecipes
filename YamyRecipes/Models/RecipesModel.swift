@@ -23,7 +23,7 @@ struct RecipesModel: Identifiable {
     //->아이템 모델
     var is_heart: Bool 
     
-    //->신고시스템 삐용삐용
+    //->신고시스템->여기서 글쓸때 아예 차단되는 기능을 추가해보자 
     
     var report: Bool
 }
